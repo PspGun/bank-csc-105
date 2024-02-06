@@ -1,6 +1,6 @@
 import express from 'express';
 import { getHistory,addBill,editBill } from '../controller/bank/bank.js';
-import { getDeposit } from '../controller/bank/Deposit.js';
+import { getDeposit } from '../controller/bank/deposits.js';
 import { getWithdraw } from '../controller/bank/withdraw.js';
 import { getTransaction } from '../controller/bank/transaction.js';
 
