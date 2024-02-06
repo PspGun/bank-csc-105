@@ -5,6 +5,7 @@ import db from "./db/connect.js";
 const app = express();
 import authRouter from './router/auth.js';
 import bankRouter from './router/bank.js';
+import userRouter from './router/user.js';
 const port = 8000;
 
 app.use(
@@ -22,7 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRouter);
-// app.use("/user", userRouter);
+app.use("/user", userRouter);
 app.use("/bank", bankRouter);
 
 app.listen(port, () => {
