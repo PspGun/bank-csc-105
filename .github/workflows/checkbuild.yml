@@ -24,5 +24,7 @@ jobs:
       - name: compile backend
         run: |
           cd ./backend
+          touch .env
+          echo '${{secrets.DATABASE_ENV}}' > .env
           npm i
           npm run build
