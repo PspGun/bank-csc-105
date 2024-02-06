@@ -16,11 +16,11 @@ jobs:
     steps:
       - name: 🎤 Checkout
         uses: actions/checkout@v2
-      - name: ⌚ Compile React.js production build
-        run: |
-          cd ./frontend
-          npm i
-          npm run build
+      # - name: ⌚ Compile React.js production build
+      #   run: |
+      #     cd ./frontend
+      #     npm i
+      # npm run build
       - name: compile backend
         run: |
           cd ./backend
