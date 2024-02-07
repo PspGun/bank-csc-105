@@ -1,3 +1,3 @@
-export const editUserProfile = () =>{
-    //implement
-} 
+export const editUserProfile = () => {
+  //implement
+};
