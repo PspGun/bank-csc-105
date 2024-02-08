@@ -1,7 +1,25 @@
 import db from "../../db/connect.js";
 export const getDeposit = (req, res) => {
-  console.log(req, res);
-  //implement
+  const userId = req.body.user_id;
+  db.query(
+    "SELECT * FROM `banks` WHERE (owner = ? && type = ?) ORDER BY date DESC",
+    [userId, "disposit"],
+    (err, re) => {
+      if (err) {
+        res.status(400).json({
+          success: false,
+          data: null,
+          error: err.message,
+        });
+      } else {
+        return res.json({
+          success: true,
+          data: re,
+          error: null,
+        });
+      }
+    }
+  );
 };
 export const disposit = async (req, res, next) => {
   try {
@@ -53,7 +71,6 @@ export const disposit = async (req, res, next) => {
       }
     );
   } catch (error) {
-    console.log(error);
     res.status(400).json({ error });
     return next();
   }

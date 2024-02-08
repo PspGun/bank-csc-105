@@ -1,11 +1,12 @@
 import db from "../../db/connect.js";
 export const getTranfer = (req, res) => {
+  const userId = req.body.user_id;
   db.query(
-    "SELECT * FROM `bank` ORDER BY date DESC WHERE type = ?, id = ?",
-    ["tranfer", req.body.user_id],
+    "SELECT * FROM `banks` WHERE (owner = ? && type = ?) ORDER BY date DESC",
+    [userId, "tranfer"],
     (err, re) => {
       if (err) {
-        res.json({
+        res.status(400).json({
           success: false,
           data: null,
           error: err.message,
@@ -71,7 +72,6 @@ export const tranfer = async (req, res, next) => {
       }
     );
   } catch (error) {
-    console.log(error);
     res.status(400).json({ error });
     return next();
   }
