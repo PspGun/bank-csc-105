@@ -1,12 +1,29 @@
 import db from "../../db/connect.js";
-export const getDeposit = (req, res) => {
-  console.log(req, res);
-  //implement
+export const getTranfer = (req, res) => {
+  db.query(
+    "SELECT * FROM `bank` ORDER BY date DESC WHERE type = ?, id = ?",
+    ["tranfer", req.body.user_id],
+    (err, re) => {
+      if (err) {
+        res.json({
+          success: false,
+          data: null,
+          error: err.message,
+        });
+      } else {
+        return res.json({
+          success: true,
+          data: re,
+          error: null,
+        });
+      }
+    }
+  );
 };
-export const disposit = async (req, res, next) => {
+export const tranfer = async (req, res, next) => {
   try {
     const user_id = req.body.user_id;
-    const receiver = null;
+    const receiver = req.body.receiver;
     const note = req.body?.note;
     const amount = req.body.amount;
     const bank = req.body.bank;
@@ -24,30 +41,31 @@ export const disposit = async (req, res, next) => {
         }
       );
     });
+    if (!(user.balance >= amount)) {
+      throw new Error("you don't have money enough to tranfer");
+    }
     const data = [
-      [user_id, user.firstname, receiver, note, amount, bank, "disposit"],
+      [user_id, user.firstname, receiver, note, amount, bank, "tranfer"],
     ];
     db.query(
       "INSERT INTO banks (`owner`, `sender`, `receiver`,`note`, `amount`, `bank`, `type`) VALUES ?",
       [data],
       (err, result) => {
         if (err) {
-          console.log(err);
           throw err;
         } else {
           db.query("UPDATE users SET balance = ? WHERE id = ?", [
-            user.balance + amount,
+            user.balance - amount,
             user_id,
             (err) => {
               if (err) {
-                console.log(err);
                 throw err;
               }
             },
           ]);
           return res.json({
             success: true,
-            data: "disposit success",
+            data: "tranfer success",
           });
         }
       }
