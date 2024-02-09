@@ -31,7 +31,7 @@ export const tranfer = async (req, res, next) => {
     // eslint-disable-next-line no-undef
     const user = await new Promise((resolve, reject) => {
       db.query(
-        "SELECT balance, firstname FROM `users` WHERE id = ?",
+        "SELECT balance, firstname, id FROM `users` WHERE id = ?",
         [user_id],
         (err, result) => {
           if (err) {
@@ -42,6 +42,20 @@ export const tranfer = async (req, res, next) => {
         }
       );
     });
+    const receive = await new Promise((resolve, reject) => {
+      db.query(
+        "SELECT balance, firstname FROM `users` WHERE credit_ID = ?",
+        [receiver],
+        (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result[0]);
+          }
+        }
+      );
+    });
+
     if (!(user.balance >= amount)) {
       throw new Error("you don't have money enough to tranfer");
     }
@@ -55,9 +69,12 @@ export const tranfer = async (req, res, next) => {
         if (err) {
           throw err;
         } else {
+          const update = [
+            [user.balance - amount, user_id],
+            [receive.balance + amount, receive.id],
+          ];
           db.query("UPDATE users SET balance = ? WHERE id = ?", [
-            user.balance - amount,
-            user_id,
+            [update],
             (err) => {
               if (err) {
                 throw err;
