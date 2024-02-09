@@ -1,7 +1,5 @@
 import db from "../../db/connect.js";
-import jwt from "jsonwebtoken";
-
-export const key = "wuuuuuuuuuuuw";
+import { generateToken } from "./jwt.js";
 export const login = (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -15,16 +13,10 @@ export const login = (req, res, next) => {
           throw err;
         } else {
           if (user[0].password != password) {
-            throw Error("password not correct");
+            return res.status(400).send("password not correct");
           } else {
             const id = user[0].id;
-            const token = jwt.sign(
-              {
-                exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
-                data: id,
-              },
-              key
-            );
+            const token = generateToken(id);
             res.setHeader("token", token);
             return res.status(200).json({ token: token });
           }

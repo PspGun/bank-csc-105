@@ -1,6 +1,10 @@
 import db from "../../db/connect.js";
+import { validateToken } from "../auth/jwt.js";
+
 export const getWithdraw = (req, res) => {
-  const userId = req.body.user_id;
+  // const userId = req.body.user_id;
+  const token = req.header("authorization").split(" ")[1];
+  const userId = validateToken(token);
   db.query(
     "SELECT * FROM `banks` WHERE (owner = ? && type = ?) ORDER BY date DESC",
     [userId, "withdraw"],
@@ -23,7 +27,9 @@ export const getWithdraw = (req, res) => {
 };
 export const withdraw = async (req, res, next) => {
   try {
-    const user_id = req.body.user_id;
+    // const user_id = req.body.user_id;
+    const token = req.header("authorization").split(" ")[1];
+    const userId = validateToken(token);
     const receiver = null;
     const note = req.body?.note;
     const amount = req.body.amount;

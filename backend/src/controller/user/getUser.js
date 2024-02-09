@@ -1,6 +1,10 @@
 import db from "../../db/connect.js";
+import { validateToken } from "../auth/jwt.js";
+
 export const getUser = async (req, res) => {
-  db.query("SELECT * FROM `users`", (err, re) => {
+  const token = req.header("authorization").split(" ")[1];
+  const userId = validateToken(token);
+  db.query("SELECT * FROM `users` WHERE id = ?", [userId], (err, re) => {
     if (err) {
       res.json({
         success: false,

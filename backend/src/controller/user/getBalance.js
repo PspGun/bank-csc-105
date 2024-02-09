@@ -1,6 +1,9 @@
 import db from "../../db/connect.js";
+import { validateToken } from "../auth/jwt.js";
 export const getBalance = (req, res) => {
-  const userId = req.body.user_id;
+  // const userId = req.body.user_id;
+  const token = req.header("authorization").split(" ")[1];
+  const userId = validateToken(token);
   db.query(
     "SELECT `balance` FROM `users` WHERE id = ? ",
     [userId],
