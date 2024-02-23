@@ -1,4 +1,4 @@
-import { Box, Avatar } from "@mui/material";
+import { Box, Avatar, Typography } from "@mui/material";
 function OptionCard(){
     return <>
         <Box
@@ -16,7 +16,10 @@ function OptionCard(){
                     display: 'flex', 
                     justifyContent: 'start',
                 }}>
-                    <h3>Options</h3>
+                    <Typography variant="h5">
+                        Options
+                    </Typography>
+                    
             </Box>
                 
             <Box
@@ -26,18 +29,25 @@ function OptionCard(){
                     flexDirection: 'row'  
             }}>
                 <Box>
-                    <Avatar></Avatar>
-                    <p>Deposit</p>
+                    <Avatar/>
+                    <Typography>
+                        Deposit
+                    </Typography>
                 </Box>
                 
                 <Box>
-                    <Avatar></Avatar>
-                    <p>Transfer</p>
+                    <Avatar/>
+                    <Typography>
+                        Transfer
+                    </Typography>
                 </Box>
                 
                 <Box>
-                    <Avatar></Avatar>
-                    <p>Withdraw</p>
+                    <Avatar/>
+                    <Typography>
+                        Withdraw
+                    </Typography>
+                   
                 </Box>
 
             </Box>

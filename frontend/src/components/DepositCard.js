@@ -1,10 +1,10 @@
-import { Button, Box } from "@mui/material";
+import { Button, Box, TextField,Typography } from "@mui/material";
 function DepositCard(){
     return <>
         <Box
 
         sx={{
-            width:300,
+            width:'25%',
             display: 'flex', 
             justifyContent: 'center',
             border: '2px solid black' ,
@@ -12,22 +12,38 @@ function DepositCard(){
             
         }}
         >
-            <h1>Deposit</h1>
+            <Typography variant="h3">
+                Deposit
+            </Typography>
+
+
 
             <Box
                 sx={{
                 display: 'flex', 
                 justifyContent: 'start',
-                flexDirection: 'column'  
+                flexDirection: 'column',
+                
             }}>
 
-                <h3>Amount</h3>
+                <Typography variant="h5">
+                    Amount
+                </Typography>
 
-                <input></input>
+                <TextField
+                    required
+                    id="outlined-required"
+                />
+                
 
-                <h3>Note {"(optional)"}</h3>
+                <Typography variant="h5">
+                    Note {"(optional)"}
+                </Typography>
 
-                <input></input>
+                <TextField
+                    required
+                    id="outlined-required"
+                />
 
                 <Button variant="contained">Deposit</Button>
             </Box>

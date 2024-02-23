@@ -1,9 +1,15 @@
 body {
   margin: 0;
-  font-family: ;
+  font-family: Roboto;
+  height: 100%
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.App{
+  
+  height: 100vh;
 }

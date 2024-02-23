@@ -1,7 +1,9 @@
-import {AppBar, Toolbar, Box} from "@mui/material";
+import { Box, Typography} from "@mui/material";
 import SideBar from "../components/sidebar";
 import DepositCard from "../components/DepositCard";
 import OptionCard from "../components/OptionCard";
+import BankAppBar from "../components/BankAppBar";
+
 
 
 
@@ -10,16 +12,14 @@ import OptionCard from "../components/OptionCard";
 function Homepage(){
 return <>
     
-      <AppBar position="static">
-        <Toolbar>
-          
-        </Toolbar>
-      </AppBar>
+    <BankAppBar/>
     {/*---body---*/}
     <Box
     sx={{
             display: 'flex', 
             justifyContent: 'center',
+            height:'80%',
+            pt: '5%'
         }}
     >
 
@@ -44,19 +44,33 @@ return <>
             <Box
             sx={{
                 display: 'flex', 
-                justifyContent: 'start',
+                justifyContent: 'center',
                 flexDirection: 'row',
-                gap:2
+                gap:2,
+                alignItems: 'center'
                 
             }}>
-                <h5>Balance</h5>
-                <h5>KBUG Saving</h5>
+                <Typography variant="h5">
+                    Balance
+                </Typography>
+                <Typography>
+                    KBUG Saving
+                </Typography>
+                
             </Box>
 
-            
-            <p>My account</p>
-            <p>xxx-x-xx-xxx</p>
-            <h2>2,xxx,xxx</h2>
+            <Typography>
+            My account
+            </Typography>
+
+            <Typography>
+                xxx-x-xx-xxx
+            </Typography>
+
+            <Typography variant="h5">
+                2,xxx,xxx
+            </Typography>
+
 
             
         </Box>    
@@ -71,7 +85,10 @@ return <>
                 
             }}>
 
-            <h2>Recent Transaction</h2>
+            <Typography variant="h5">
+                Recent Transaction
+            </Typography>
+
             
     </Box>
 </Box>
