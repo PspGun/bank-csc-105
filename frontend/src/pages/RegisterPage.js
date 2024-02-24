@@ -18,7 +18,7 @@ function RegisterPage() {
           alignItems: "center",
           border: "solid #EDECEC 2px",
           borderRadius: "10px",
-          padding: "30px 30px",
+          padding: "30px 60px",
         }}
       >
         <Typography
