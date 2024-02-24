@@ -1,6 +1,15 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import logo from "../assets/icon.png";
+import { useState } from "react";
 function SignInPage() {
+  const [userName, setUsername] = useState("");
+  const [passWord, setPassword] = useState("");
+
+  const handleSubmit = () => {
+    if (userName !== "" && passWord !== "") {
+      alert("login Sucess");
+    }
+  };
   return (
     <Box
       sx={{
@@ -12,7 +21,11 @@ function SignInPage() {
         flexDirection: "column",
       }}
     >
-      <img src={logo} alt="logo" style={{ width: "80px", margin: "20px 0px" }} />
+      <img
+        src={logo}
+        alt="logo"
+        style={{ width: "80px", margin: "20px 0px" }}
+      />
       <Box
         sx={{
           display: "flex",
@@ -46,7 +59,15 @@ function SignInPage() {
             <Typography sx={{ fontWeight: "500", fontSize: "20px" }}>
               Username
             </Typography>
-            <TextField variant="outlined" size="small" fullWidth />
+            <TextField
+              variant="outlined"
+              size="small"
+              fullWidth
+              error={userName === ""}
+              helperText={!userName ? "Please enter your username" : ""}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
           </Box>
           <Box>
             <Typography sx={{ fontWeight: "500", fontSize: "20px" }}>
@@ -57,6 +78,9 @@ function SignInPage() {
               variant="outlined"
               size="small"
               fullWidth
+              error={!passWord}
+              helperText={!passWord ? "Please enter your password" : ""}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </Box>
         </Box>
@@ -64,6 +88,8 @@ function SignInPage() {
           variant="contained"
           fullWidth
           sx={{ marginBottom: "20px", padding: "10px" }}
+          disabled={userName === "" || passWord === ""}
+          onClick={handleSubmit}
         >
           Sign in
         </Button>
