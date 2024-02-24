@@ -2,8 +2,7 @@ import { Button, Box, TextField,Typography } from "@mui/material";
 function DepositCard(){
     
     const cardStyle = {
-        width:'100%',
-        height:'70%',
+        width: 558,
         display: 'flex', 
         justifyContent: 'center',
         
@@ -12,12 +11,12 @@ function DepositCard(){
     const bodyStyle = {
         display: 'flex', 
         width:'50%',
-        height:'100%',
+        height:530,
         flexDirection: 'column',
         alignItems:'center',
         justifyContent: 'center',
         gap:'5%',
-        
+
     };
 
     const inputStyle = {
@@ -31,7 +30,7 @@ function DepositCard(){
 
     const fluidInput = {
         width:'100%',
-        height:'10%',
+        height:47,
     };
 
     return <>

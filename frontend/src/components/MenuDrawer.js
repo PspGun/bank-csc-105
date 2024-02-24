@@ -17,21 +17,10 @@ import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
 import HistoryIcon from '@mui/icons-material/History';
 
-const drawerWidth = '35%';
-const buttonWidth = 220;
+const drawerWidth = 250;
+const buttonWidth = 200;
 
 export default function MenuDrawer(props) {
-
-    const theme = createTheme({
-        palette: {
-          primary: {
-            light: '#757ce8',
-            main: '#3f50b5',
-            dark: '#002884',
-            contrastText: '#fff',
-          },
-        },
-      });
 
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -58,15 +47,13 @@ export default function MenuDrawer(props) {
             <Box sx={{ 
                 display:'flex',
                 flexDirection:'column',
-                alignItems:'end',
                 overflow: 'auto'}}>
             <List >
                 <ListItem 
                     key={"HomePage"} 
                     sx={{
-                        backgroundColor:'primary',
                         width:buttonWidth,}}>
-                    <ListItemButton variant="contained">
+                    <ListItemButton>
                     <ListItemIcon>
                         <HomeIcon />
                     </ListItemIcon>
@@ -125,7 +112,7 @@ export default function MenuDrawer(props) {
                     aria-label="open drawer"
                     edge="start"
                     onClick={handleDrawerToggle}
-                    sx={{ mr: 2, display: { sm: 'none' } }}
+                    sx={{ mr: 0, display: { md: 'none' } }}
                 >
                 <MenuIcon />
                 </IconButton>
@@ -138,7 +125,7 @@ export default function MenuDrawer(props) {
         <Box
         component="nav"
         sx={{ 
-            width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+            width: { md: drawerWidth }, flexShrink: { md: 0 } }}
         aria-label="mailbox folders"
         >
             <Drawer
@@ -150,7 +137,7 @@ export default function MenuDrawer(props) {
                 keepMounted: true, // Better open performance on mobile.
             }}
             sx={{
-                display: { xs: 'block', sm: 'none' },
+                display: { xs: 'block', md: 'none' },
                 '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
             }}
             >
@@ -160,8 +147,8 @@ export default function MenuDrawer(props) {
             <Drawer
             variant="permanent"
             sx={{
-                p:'20%',
-                display: { xs: 'none', sm: 'block' },
+                
+                display: { xs: 'none', md: 'block' },
                 '& .MuiDrawer-paper': { borderWidth: 0 ,boxSizing: 'border-box', width: drawerWidth },
             }}
             open
@@ -170,10 +157,7 @@ export default function MenuDrawer(props) {
             </Drawer>
         </Box>
 
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-            <Toolbar />
-            
-        </Box>
+        
         </Box>
     );
 }
