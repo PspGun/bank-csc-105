@@ -12,43 +12,52 @@ function SignInPage() {
         flexDirection: "column",
       }}
     >
-      <img
-        src={logo}
-        alt="logo"
-        style={{ width: "80px", margin: "20px 0px" }}
-      />
+      <img src={logo} alt="logo" style={{ width: "80px", margin: "20px 0px" }} />
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          border: "solid #EDECEC 2px",
+          border: { xs: "", md: "solid #EDECEC 2px" },
           borderRadius: "10px",
           padding: "50px 60px",
         }}
       >
         <Typography
-          sx={{ fontWeight: "700", fontSize: "28px", color: "#2F69D9" }}
+          sx={{
+            fontWeight: "700",
+            fontSize: { xs: "20px", md: "28px" },
+            color: "#2F69D9",
+          }}
         >
           Sign in to KBUG
         </Typography>
         <Typography
-          sx={{ fontWeight: "500", fontSize: "18px", color: "#9B9B9B" }}
+          sx={{
+            fontWeight: "500",
+            fontSize: { xs: "14px", md: "18px" },
+            color: "#9B9B9B",
+          }}
         >
           Welcome back! Please sign in to continue
         </Typography>
-        <Box sx={{ marginY: "40px", width: "100%" }}>
+        <Box sx={{ marginY: "20px", width: "100%" }}>
           <Box sx={{ marginBottom: "20px" }}>
             <Typography sx={{ fontWeight: "500", fontSize: "20px" }}>
               Username
             </Typography>
-            <TextField variant="outlined" fullWidth />
+            <TextField variant="outlined" size="small" fullWidth />
           </Box>
           <Box>
             <Typography sx={{ fontWeight: "500", fontSize: "20px" }}>
               Password
             </Typography>
-            <TextField type="password" variant="outlined" fullWidth />
+            <TextField
+              type="password"
+              variant="outlined"
+              size="small"
+              fullWidth
+            />
           </Box>
         </Box>
         <Button
