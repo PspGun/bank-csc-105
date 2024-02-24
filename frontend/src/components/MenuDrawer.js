@@ -11,17 +11,27 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
+import HomeIcon from '@mui/icons-material/Home';
+import LogoutIcon from '@mui/icons-material/Logout';
+import HistoryIcon from '@mui/icons-material/History';
 
-
-
-
-const drawerWidth = 240;
+const drawerWidth = '35%';
+const buttonWidth = 220;
 
 export default function MenuDrawer(props) {
+
+    const theme = createTheme({
+        palette: {
+          primary: {
+            light: '#757ce8',
+            main: '#3f50b5',
+            dark: '#002884',
+            contrastText: '#fff',
+          },
+        },
+      });
 
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -45,31 +55,56 @@ export default function MenuDrawer(props) {
     const drawer = (
         <div>
         <Toolbar />
-            <Box sx={{ overflow: 'auto' }}>
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                <ListItem key={text} disablePadding>
-                    <ListItemButton>
+            <Box sx={{ 
+                display:'flex',
+                flexDirection:'column',
+                alignItems:'end',
+                overflow: 'auto'}}>
+            <List >
+                <ListItem 
+                    key={"HomePage"} 
+                    sx={{
+                        backgroundColor:'primary',
+                        width:buttonWidth,}}>
+                    <ListItemButton variant="contained">
                     <ListItemIcon>
-                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                        <HomeIcon />
                     </ListItemIcon>
-                    <ListItemText primary={text} />
+                    <ListItemText primary={"HomePage"} />
                     </ListItemButton>
                 </ListItem>
-                ))}
+                <ListItem key={"HistoryPage"} sx={{width:buttonWidth}}>
+                    <ListItemButton>
+                    <ListItemIcon>
+                        <HistoryIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={"HistoryPage"} />
+                    </ListItemButton>
+                </ListItem>
             </List>
-            <Divider />
+
+            <Toolbar/>
+            <Toolbar/>
+            <Toolbar/>
+            <Toolbar/>
+
+            <Divider/>
+
+            <Toolbar/>
+            <Toolbar/>
+            <Toolbar/>
+            <Toolbar/>
+
+
             <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                <ListItem key={text} disablePadding>
+            <ListItem key={"Logout"} sx={{width:buttonWidth}}>
                     <ListItemButton>
                     <ListItemIcon>
-                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                        <LogoutIcon />
                     </ListItemIcon>
-                    <ListItemText primary={text} />
+                    <ListItemText primary={"Logout"} />
                     </ListItemButton>
                 </ListItem>
-                ))}
             </List>
             </Box>
         </div>
@@ -84,7 +119,7 @@ export default function MenuDrawer(props) {
             sx={{
                 width:'100%',
                 zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-            <Toolbar>
+            <Toolbar >
                 <IconButton
                     color="inherit"
                     aria-label="open drawer"
@@ -102,7 +137,8 @@ export default function MenuDrawer(props) {
         
         <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ 
+            width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
         >
             <Drawer
@@ -124,8 +160,9 @@ export default function MenuDrawer(props) {
             <Drawer
             variant="permanent"
             sx={{
+                p:'20%',
                 display: { xs: 'none', sm: 'block' },
-                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                '& .MuiDrawer-paper': { borderWidth: 0 ,boxSizing: 'border-box', width: drawerWidth },
             }}
             open
             >
