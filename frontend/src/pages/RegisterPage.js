@@ -16,53 +16,66 @@ function RegisterPage() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          border: "solid #EDECEC 2px",
+          border: {xs:"",md:"solid #EDECEC 2px"},
           borderRadius: "10px",
-          padding: "30px 60px",
+          padding: "20px 40px",
         }}
       >
         <Typography
-          sx={{ fontWeight: "700", fontSize: "28px", color: "#2F69D9" }}
+          sx={{
+            fontWeight: "700",
+            fontSize: { xs: "20px", md: "28px" },
+            color: "#2F69D9",
+          }}
         >
           Create Your Account
         </Typography>
         <Typography
-          sx={{ fontWeight: "500", fontSize: "18px", color: "#9B9B9B" }}
+          sx={{
+            fontWeight: "500",
+            fontSize: { xs: "14px", md: "18px" },
+            color: "#9B9B9B",
+          }}
         >
           Please fill in the detail to get started
         </Typography>
-        <Box sx={{ marginY: "40px", width: "100%" }}>
+        <Box sx={{ marginY: "20px", width: "100%" }}>
           <Box sx={{ display: "flex", gap: "10px", marginBottom: "18px" }}>
             <Box>
               <Typography sx={{ fontWeight: "500", fontSize: "18px" }}>
                 Firstname
               </Typography>
-              <TextField variant="outlined" />
+              <TextField variant="outlined" size="small" />
             </Box>
             <Box>
               <Typography sx={{ fontWeight: "500", fontSize: "18px" }}>
                 Lastname
               </Typography>
-              <TextField variant="outlined" />
+              <TextField variant="outlined" size="small" />
             </Box>
           </Box>
           <Box sx={{ marginBottom: "18px" }}>
             <Typography sx={{ fontWeight: "500", fontSize: "18px" }}>
               Email
             </Typography>
-            <TextField variant="outlined" fullWidth />
+            <TextField variant="outlined" size="small" fullWidth />
           </Box>
           <Box sx={{ marginBottom: "18px" }}>
             <Typography sx={{ fontWeight: "500", fontSize: "18px" }}>
               Username
             </Typography>
-            <TextField variant="outlined" fullWidth />
+            <TextField variant="outlined" size="small" fullWidth />
           </Box>
           <Box>
             <Typography sx={{ fontWeight: "500", fontSize: "18px" }}>
               Password
             </Typography>
-            <TextField type="password" variant="outlined" fullWidth />
+            <TextField
+              type="password"
+              variant="outlined"
+              size="small"
+              fullWidth
+            />
           </Box>
         </Box>
         <Button
