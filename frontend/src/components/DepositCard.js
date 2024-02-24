@@ -1,53 +1,113 @@
 import { Button, Box, TextField,Typography } from "@mui/material";
 function DepositCard(){
+    
+    const cardStyle = {
+        width:'100%',
+        height:'70%',
+        display: 'flex', 
+        justifyContent: 'center',
+        
+    };
+
+    const bodyStyle = {
+        display: 'flex', 
+        width:'50%',
+        height:'100%',
+        flexDirection: 'column',
+        alignItems:'center',
+        justifyContent: 'center',
+        gap:'5%',
+        
+    };
+
+    const inputStyle = {
+        display: 'flex', 
+        width:'100%',
+        height:'20%',
+        alignItems:'flex-start',
+        flexDirection: 'column',
+        
+    };
+
+    const fluidInput = {
+        width:'100%',
+        height:'10%',
+    };
+
     return <>
-        <Box
-
-        sx={{
-            width:'25%',
-            display: 'flex', 
-            justifyContent: 'center',
-            border: '2px solid black' ,
-            flexDirection: 'column'
-            
-        }}
+        <Box 
+            style={cardStyle}
+            sx={{
+                borderRadius: '5%',
+                boxShadow: 10}}
         >
-            <Typography variant="h3">
-                Deposit
-            </Typography>
+
+            <Box 
+                style={bodyStyle}>
+
+                    <Typography
+                        style={{fontWeight: 600,}}
+                        sx={{
+                            typography: { md: 'h3', xs: 'h5' },
+                            color:'blue',
+                            mb:'5%'}}>
+                            Deposit
+                    </Typography>
 
 
 
-            <Box
-                sx={{
-                display: 'flex', 
-                justifyContent: 'start',
-                flexDirection: 'column',
-                
-            }}>
+                    <Box style={inputStyle}>
 
-                <Typography variant="h5">
-                    Amount
-                </Typography>
+                        <Typography 
+                            sx={{
+                                mb:'5%',
+                                typography: { md: 'h5', xs: 'subtitle1' },}}>
+                            Amount
+                        </Typography>
 
-                <TextField
-                    required
-                    id="outlined-required"
-                />
-                
+                        <TextField
+                            
+                            style={fluidInput}
+                            type="number"
+                            required
+                            id="outlined-required"
+                            placeholder="0.00"
+                        />
 
-                <Typography variant="h5">
-                    Note {"(optional)"}
-                </Typography>
+                    </Box>
 
-                <TextField
-                    required
-                    id="outlined-required"
-                />
 
-                <Button variant="contained">Deposit</Button>
+                    <Box style={inputStyle}>
+
+                        <Typography 
+                            variant="h5"
+                            sx={{
+                                mb:'5%',
+                                typography: { md: 'h5', xs: 'subtitle1' },}}>
+                            Note {"(optional)"}
+                        </Typography>
+
+                        <TextField
+                            style={fluidInput}
+                            sx={{
+                            }}
+                            required
+                            id="outlined-required"
+                        />
+
+                    </Box>
+
+                    <Button 
+                        variant="contained"
+                        style={fluidInput}>
+                        <Typography
+                        sx={{
+                            typography: { md: 'h5', xs: 'subtitle1' }}}>
+                        Deposit
+                        </Typography>
+                    </Button>
+
             </Box>
-
         </Box>
     </>
 }

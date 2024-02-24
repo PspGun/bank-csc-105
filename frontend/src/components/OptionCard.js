@@ -7,12 +7,10 @@ function OptionCard(){
                 justifyContent: 'start',
                 border: '2px solid black' ,
                 flexDirection: 'column'
-                
             }}>
 
             <Box
                 sx={{
-                    width:300,
                     display: 'flex', 
                     justifyContent: 'start',
                 }}>
@@ -22,35 +20,7 @@ function OptionCard(){
                     
             </Box>
                 
-            <Box
-                    sx={{
-                    display: 'flex', 
-                    justifyContent: 'start',
-                    flexDirection: 'row'  
-            }}>
-                <Box>
-                    <Avatar/>
-                    <Typography>
-                        Deposit
-                    </Typography>
-                </Box>
-                
-                <Box>
-                    <Avatar/>
-                    <Typography>
-                        Transfer
-                    </Typography>
-                </Box>
-                
-                <Box>
-                    <Avatar/>
-                    <Typography>
-                        Withdraw
-                    </Typography>
-                   
-                </Box>
-
-            </Box>
+            
         </Box>
     </>
 }

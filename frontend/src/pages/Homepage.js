@@ -1,10 +1,8 @@
 import { Box, Typography} from "@mui/material";
-import SideBar from "../components/sidebar";
 import DepositCard from "../components/DepositCard";
 import OptionCard from "../components/OptionCard";
 import BankAppBar from "../components/BankAppBar";
-
-
+import MenuDrawer from "../components/MenuDrawer";
 
 
 
@@ -12,27 +10,49 @@ import BankAppBar from "../components/BankAppBar";
 function Homepage(){
 return <>
     
-    <BankAppBar/>
+
     {/*---body---*/}
-    <Box
-    sx={{
+        <Box
+        sx={{
+            width:'100%',
+            height:'90%',
             display: 'flex', 
             justifyContent: 'center',
-            height:'80%',
-            pt: '5%'
-        }}
-    >
+        }}>
+
+            <Box
+            sx={{
+                display: 'flex', 
+                justifyContent: 'center',
+                height:'90%',
+                width:'100%',
+                pt: '2%',
+            }}>
+
+                <MenuDrawer/>
+                
+                <Box
+                sx={{
+                    width: {md:'25%',xs:'100%'},
+                    display: 'flex', 
+                    justifyContent: 'start',
+                    flexDirection: 'column',
+                    gap:'5%'
+                }}>
+                    <DepositCard/>
+                    <OptionCard/>
+                </Box>
+            </Box>
+    </Box>
+
+</>
+}
+export default Homepage;
 
 
-    <SideBar/>
-
-    <DepositCard/>
 
 
-    <OptionCard/>
-        
-{/*---Balance Card---*/}    
-        <Box
+<Box
             sx={{
                 
                 display: 'flex', 
@@ -91,10 +111,3 @@ return <>
 
             
     </Box>
-</Box>
-
-</>
-}
-export default Homepage;
-
-
