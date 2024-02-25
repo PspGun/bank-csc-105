@@ -24,16 +24,14 @@ function SignInPage() {
           password: passWord,
         });
         if (response.status === 200) {
-          // Store the token in localStorage
           localStorage.setItem("token", response.data.token);
-          // Redirect to the "/" route
           navigate("/");
         }
       } catch (error) {
-        console.log(error.response.status); // Log the status for debugging
+        console.log(error.response.status);
 
         if (error.response.status === 400) {
-          setOpen(true); // Open the AlertDialog
+          setOpen(true);
         }
       }
     }
@@ -142,7 +140,11 @@ function SignInPage() {
                 textDecoration: "underline",
                 marginLeft: "5px",
                 color: "#2F69D9",
+                ":hover": {
+                  cursor: "pointer",
+                },
               }}
+              onClick={() => navigate("/signup")}
             >
               Sign up
             </Typography>
