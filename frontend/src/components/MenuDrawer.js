@@ -17,7 +17,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
 import HistoryIcon from '@mui/icons-material/History';
 
-const drawerWidth = 250;
+const drawerWidth = 361;
 const buttonWidth = 200;
 
 export default function MenuDrawer(props) {
@@ -42,8 +42,9 @@ export default function MenuDrawer(props) {
     };
 
     const drawer = (
-        <div>
+        <Box sx={{pl:'80px',}}>
         <Toolbar />
+        <Toolbar/>
             <Box sx={{ 
                 display:'flex',
                 flexDirection:'column',
@@ -70,20 +71,14 @@ export default function MenuDrawer(props) {
                 </ListItem>
             </List>
 
-            <Toolbar/>
-            <Toolbar/>
-            <Toolbar/>
-            <Toolbar/>
-
-            <Divider/>
-
-            <Toolbar/>
-            <Toolbar/>
-            <Toolbar/>
-            <Toolbar/>
 
 
-            <List>
+            <Divider sx={{mt:30}}/>
+
+
+
+
+            <List  sx={{mt:50}}>
             <ListItem key={"Logout"} sx={{width:buttonWidth}}>
                     <ListItemButton>
                     <ListItemIcon>
@@ -94,7 +89,7 @@ export default function MenuDrawer(props) {
                 </ListItem>
             </List>
             </Box>
-        </div>
+        </Box>
     );
 
 

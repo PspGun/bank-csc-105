@@ -1,9 +1,9 @@
 import { Box, Typography} from "@mui/material";
-import DepositCard from "../components/DepositCard";
-import OptionCard from "../components/OptionCard";
+import DepositCard from "../components/HomePage/DepositCard";
+import OptionCard from "../components/HomePage/OptionCard";
 import MenuDrawer from "../components/MenuDrawer";
-import BalanceCard from "../components/BalanceCard";
-import TransactionCard from "../components/TransactionCard";
+import BalanceCard from "../components/HomePage/BalanceCard";
+import TransactionCard from "../components/HomePage/TransactionCard";
 
 
 
