@@ -1,12 +1,7 @@
 import { Button, Box, TextField,Typography } from "@mui/material";
 function DepositCard(){
     
-    const cardStyle = {
-        width: 600,
-        display: 'flex', 
-        justifyContent: 'center',
-        
-    };
+
 
     const bodyStyle = {
         display: 'flex', 
@@ -28,17 +23,15 @@ function DepositCard(){
         
     };
 
-    const fluidInput = {
-        width:'100%',
-        height:47,
-    };
-
     return <>
         <Box 
-            style={cardStyle}
             sx={{
-                borderRadius: '5%',
-                boxShadow: 10}}
+                width: { md: 600, xs: "100%" },
+                display: 'flex', 
+                justifyContent: 'center',
+                borderRadius: 5,
+                boxShadow: 10,
+                mt:{ md: 0, xs: 10 }}}
         >
 
             <Box 
@@ -47,7 +40,7 @@ function DepositCard(){
                     <Typography
                         style={{fontWeight: 600,}}
                         sx={{
-                            typography: { md: 'h3', xs: 'h5' },
+                            typography: { md: 'h3', xs: 'h3' },
                             color:'blue',
                             mb:'5%'}}>
                             Deposit
@@ -65,8 +58,7 @@ function DepositCard(){
                         </Typography>
 
                         <TextField
-                            
-                            style={fluidInput}
+                            sx={{width:"100%"}}
                             type="number"
                             required
                             id="outlined-required"
@@ -87,9 +79,7 @@ function DepositCard(){
                         </Typography>
 
                         <TextField
-                            style={fluidInput}
-                            sx={{
-                            }}
+                            sx={{width:"100%"}}
                             required
                             id="outlined-required"
                         />
@@ -98,7 +88,7 @@ function DepositCard(){
 
                     <Button 
                         variant="contained"
-                        style={fluidInput}>
+                        sx={{width:"100%",height:50}}>
                         <Typography
                         sx={{
                             typography: { md: 'h5', xs: 'subtitle1' }}}>

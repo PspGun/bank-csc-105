@@ -5,8 +5,8 @@ function TransactionCard(){
     return <>
         <Box
             sx={{
-                width:500,
-                height: 475,
+                width:{ md: 600, xs: "100%" },
+                height: 525,
                 borderRadius: '5%',
                 boxShadow: 10
             }}>

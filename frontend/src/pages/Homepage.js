@@ -34,6 +34,7 @@ class Homepage extends React.Component {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
+            // backgroundColor:'#212121'
           }}
         >
           <NavBar />
@@ -41,12 +42,13 @@ class Homepage extends React.Component {
           <Box
             sx={{
               height: "100%",
-              width: "90%",
+              width: { md: "90%", xs: "100%" },
               display: "flex",
               justifyContent: "center",
               flexDirection: { md: "row", xs: "column" },
-              p: 3,
+              p: { md: 3, xs: 0 },
               gap: 5,
+              mt:{ md: 0, xs: 100 }
             }}
           >
             <MenuDrawer />

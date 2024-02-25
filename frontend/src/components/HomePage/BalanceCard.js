@@ -6,68 +6,61 @@ function BalanceCard() {
     <>
       <Box
         sx={{
-          width: {md: 500,xs:'100%'},
-          height: 275,
+          width: { md: 500, xs: "100%" },
+          height: 225,
           display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
           flexDirection: "column",
-          borderRadius: 5,
+          justifyContent: "center",
+          borderRadius: { md: 5 ,xs: 2 },
           boxShadow: 10,
-          p: {md: 0,xs: 1},
-          color:'white',
-          backgroundColor:'#2F69D9'
+          py: { md: 0, xs: 2 },
+          color: "white",
+          backgroundColor: "#2F69D9",
         }}
       >
         <Box
           sx={{
+            width: { md: 500, xs: "100%" },
             display: "flex",
             flexDirection: "row",
-            justifyContent: "start",
+            justifyContent: "space-around",
             alignItems: "start",
+            p:{ md: 0, xs: 2 }
           }}
         >
           <Box
             sx={{
-              width: 200,
+              width: 320,
               display: "flex",
               flexDirection: "column",
               alignItems: "start",
-              justifyContent: "center",
+              justifyContent: "start",
+              gap:1
             }}
           >
-          <Box
-          
-          ></Box>
-            <Typography variant="h5" style={{ fontWeight: 600 }}>
-              <AccountBalanceWalletIcon sx={{pt:1}}/> Balance
-            </Typography>
-
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "start",
-              }}
-            >
+            
               <Typography variant="h5" style={{ fontWeight: 600 }}>
+                <AccountBalanceWalletIcon /> Balance
+              </Typography>
+
+              <Typography variant="subtitle1" style={{ fontWeight: 600 }}>
                 My Account
               </Typography>
 
-              <Typography variant="h5" style={{ fontWeight: 600 }}>
+              <Typography variant="subtitle1" style={{ fontWeight: 600 }}>
                 XXX-X-X3154-X
               </Typography>
-            </Box>
-          </Box>
 
-          <Typography variant="h5" style={{ fontWeight: 600 }}>
+              <Typography variant="h3" style={{ fontWeight: 600 }}>
+                99999.99 THB
+              </Typography>
+            </Box>
+          
+
+          <Typography variant="subtitle1" style={{ fontWeight: 600 }}>
             KBUG Saving
           </Typography>
         </Box>
-
-        <Typography variant="h2" style={{ fontWeight: 600 }}>
-          99999.99
-        </Typography>
       </Box>
     </>
   );
