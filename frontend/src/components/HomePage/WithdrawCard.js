@@ -2,7 +2,7 @@ import { Button, Box, TextField,Typography } from "@mui/material";
 function WithdrawCard(){
     
     const cardStyle = {
-        width: 558,
+        width: 600,
         display: 'flex', 
         justifyContent: 'center',
         
@@ -15,7 +15,7 @@ function WithdrawCard(){
         flexDirection: 'column',
         alignItems:'center',
         justifyContent: 'center',
-        gap:'5%',
+        gap: 20,
 
     };
 

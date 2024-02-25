@@ -6,15 +6,15 @@ function BalanceCard() {
     <>
       <Box
         sx={{
-          width: 443,
-          height: 325,
+          width: {md: 500,xs:'100%'},
+          height: 275,
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
           flexDirection: "column",
-          borderRadius: "5%",
+          borderRadius: 5,
           boxShadow: 10,
-          p: 5,
+          p: {md: 0,xs: 1},
           color:'white',
           backgroundColor:'#2F69D9'
         }}
@@ -36,8 +36,11 @@ function BalanceCard() {
               justifyContent: "center",
             }}
           >
-            <Typography variant="h4" style={{ fontWeight: 600 }}>
-              <AccountBalanceWalletIcon /> Deposit
+          <Box
+          
+          ></Box>
+            <Typography variant="h5" style={{ fontWeight: 600 }}>
+              <AccountBalanceWalletIcon sx={{pt:1}}/> Balance
             </Typography>
 
             <Box
