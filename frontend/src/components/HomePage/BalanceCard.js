@@ -15,6 +15,8 @@ function BalanceCard() {
           borderRadius: "5%",
           boxShadow: 10,
           p: 5,
+          color:'white',
+          backgroundColor:'#2F69D9'
         }}
       >
         <Box

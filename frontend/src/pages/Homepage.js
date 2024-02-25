@@ -4,44 +4,47 @@ import OptionCard from "../components/HomePage/OptionCard";
 import MenuDrawer from "../components/MenuDrawer";
 import BalanceCard from "../components/HomePage/BalanceCard";
 import TransactionCard from "../components/HomePage/TransactionCard";
+import NavBar from "../components/Navbar";
+
 
 
 
 function Homepage(){
 return <>
     
-
+    
     {/*---body---*/}
         <Box
         sx={{
+            height:'100%',
             width:'100%',
-            height:'90%',
             display: 'flex',
             justifyContent: 'center',
-            p:3,
-            mt:5,
+            flexDirection:'column'
         }}>
+            <NavBar/>
 
             <Box
-            sx={{
-                display: 'flex', 
-                justifyContent: 'center',
-                flexDirection: {md:'row', xs:'column'},
-                height:'90%',
-                width:'100%',
-                pt: '2%',
-                gap: 10
-            }}>
+                sx={{
 
+                    backgroundColor:'red',
+                    height:'100%',
+                    width:'100%',
+                    display: 'flex', 
+                    justifyContent: 'center',
+                    flexDirection: {md:'row', xs:'column'},
+                }}>
+                    
                 <MenuDrawer/>
                 
                 <Box
                 sx={{
-                    width: {md: 500,xs:'100%'},
+                    width: {md: 600,xs:'100%'},
                     display: 'flex', 
                     justifyContent: 'start',
                     flexDirection: 'column',
                     gap:4
+                    
                 }}>
                     <DepositCard/>
                     <OptionCard/>
@@ -49,7 +52,7 @@ return <>
 
                 <Box
                 sx={{
-                    width: {md: 500,xs:'100%'},
+                    width: {md: 600,xs:'100%'},
                     display: 'flex', 
                     justifyContent: 'start',
                     flexDirection: 'column',
@@ -59,6 +62,7 @@ return <>
                     <TransactionCard/>
                 </Box>
                 
+
             </Box>
     </Box>
 

@@ -1,6 +1,11 @@
-import { Box, Typography } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 import MenuDrawer from "../components/MenuDrawer";
-import HistoryCard from "../components/HistoryPage/HistoryCard";
+import D_Card from "../components/HistoryPage/D_Card";
+import W_Card from "../components/HistoryPage/W_Card";
+import T_Card from "../components/HistoryPage/T_Card";
+import Deposit from "./../assets/images/Deposit.png";
+import Transfer from "./../assets/images/Transfer.png";
+import Withdraw from "./../assets/images/Withdraw.png";
 
 function History() {
   return (
@@ -12,8 +17,8 @@ function History() {
           flexDirection: { md: "row", xs: "column" },
           height: "90%",
           width: "100%",
-          pt: 10,
-          gap: 10,
+          pt: { xs: 0, md: 20 },
+          gap: { xs: 4, md: 10 },
         }}
       >
         <MenuDrawer />
@@ -22,8 +27,9 @@ function History() {
           sx={{
             display: "flex",
             justifyContent: "start",
+            alignItems:'start',
             flexDirection: "column",
-            gap: 5,
+            gap: 3,
           }}
         >
           <Typography
@@ -36,39 +42,117 @@ function History() {
             History
           </Typography>
 
-          <Box>
-            <Typography
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "start",
+              flexDirection: "column",
+            }}
+          >
+            <Box
               sx={{
-                typography: { md: "h5", xs: "h7" },
-                fontWeight: 600,
+                display: "flex",
+                flexDirection: "row",
+                gap: 2,
               }}
             >
-              Deposit
-            </Typography>
-            <HistoryCard x={1}/>
+              <Typography
+                style={{ fontWeight: 600 }}
+                sx={{
+                  typography: { md: "h5", xs: "h7" },
+                }}
+              >
+                Deposit
+              </Typography>
+
+              <Avatar src={Deposit} />
+            </Box>
+
+            <Box
+            sx={{
+                display: "flex",
+                flexDirection: "row",
+                gap: 2,
+            }}>
+              {['1','2','3','4'].map((text, index) => (
+                <D_Card />
+              ))}
+            </Box>
+            
           </Box>
 
-          <Box>
-            <Typography
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "start",
+              flexDirection: "column",
+            }}
+          >
+            <Box
               sx={{
-                typography: { md: "h5", xs: "h7" },
-                fontWeight: 600,
+                display: "flex",
+                flexDirection: "row",
+                gap: 2,
               }}
             >
-              Withdraw
-            </Typography>
-            <HistoryCard x={2}/>
+              <Typography
+                style={{ fontWeight: 600 }}
+                sx={{
+                  typography: { md: "h5", xs: "h7" },
+                }}
+              >
+                Withdraw
+              </Typography>
+              <Avatar src={Withdraw} />
+            </Box>
+
+            <Box
+            sx={{
+                display: "flex",
+                flexDirection: "row",
+                gap: 2,
+            }}>
+              {['1','2','3','4'].map((text, index) => (
+                <W_Card />
+              ))}
+            </Box>
           </Box>
-          <Box>
-            <Typography
+
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "start",
+              flexDirection: "column",
+            }}
+          >
+            <Box
               sx={{
-                typography: { md: "h5", xs: "h7" },
-                fontWeight: 600,
+                display: "flex",
+                flexDirection: "row",
+                gap: 2,
               }}
             >
-              Transfer
-            </Typography>
-            <HistoryCard/>
+              <Typography
+                style={{ fontWeight: 600 }}
+                sx={{
+                  typography: { md: "h5", xs: "h7" },
+                }}
+              >
+                Transfer
+              </Typography>
+              <Avatar src={Transfer} />
+            </Box>
+
+            <Box
+            sx={{
+                display: "flex",
+                flexDirection: "row",
+                gap: 2,
+            }}>
+              {['1','2','3','4'].map((text, index) => (
+                <T_Card />
+              ))}
+            </Box>
           </Box>
         </Box>
       </Box>

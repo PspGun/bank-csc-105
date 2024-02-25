@@ -1,5 +1,9 @@
-import { Box, Avatar, Typography } from "@mui/material";
+import { Box, Avatar, Typography, IconButton } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
+import Deposit from "./../../assets/images/Deposit.png";
+import Transfer from "./../../assets/images/Transfer.png";
+import Withdraw from "./../../assets/images/Withdraw.png";
+
 function OptionCard() {
   return (
     <>
@@ -34,6 +38,8 @@ function OptionCard() {
               mt: 3,
             }}
           >
+
+<IconButton sx={{borderRadius:5}}>
             <Box
               sx={{
                 display: "flex",
@@ -41,12 +47,14 @@ function OptionCard() {
                 alignItems: "center",
               }}
             >
-              <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
+              <Avatar src={Deposit} />
               <Typography variant="h5" style={{ fontWeight: 600 }}>
                 Deposit
               </Typography>
             </Box>
+</IconButton>
 
+<IconButton sx={{borderRadius:5}}>
             <Box
               sx={{
                 display: "flex",
@@ -54,12 +62,14 @@ function OptionCard() {
                 alignItems: "center",
               }}
             >
-              <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
+              <Avatar src={Transfer} />
               <Typography variant="h5" style={{ fontWeight: 600 }}>
                 Transfer
               </Typography>
             </Box>
+</IconButton>
 
+<IconButton sx={{borderRadius:5}}>
             <Box
               sx={{
                 display: "flex",
@@ -67,11 +77,12 @@ function OptionCard() {
                 alignItems: "center",
               }}
             >
-              <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
+              <Avatar src={Withdraw} />
               <Typography variant="h5" style={{ fontWeight: 600 }}>
                 Withdraw
               </Typography>
             </Box>
+</IconButton>
           </Box>
         </Box>
       </Box>

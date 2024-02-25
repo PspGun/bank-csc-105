@@ -19,12 +19,12 @@ import HistoryIcon from '@mui/icons-material/History';
 
 import logo from './../assets/images/LOGO.png'
 import kbug from './../assets/images/KBUG.png'
-import { ImageList } from '@mui/material';
 
-const drawerWidth = 361;
-const buttonWidth = 200;
 
-export default function MenuDrawer(props) {
+function NavBar(props){
+
+    const drawerWidth = 361;
+    const buttonWidth = 200;
 
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -97,18 +97,17 @@ export default function MenuDrawer(props) {
             </Box>
         </Box>
     );
+    
 
 
-    return (
-        <Box sx={{ display: 'block' }}>
-        <CssBaseline />
+    return<>
         <AppBar 
             position="static" 
             sx={{
                 width:'100%',
                 height:156,
                 p:{ xs: 0, md: 5 },
-                zIndex: (theme) => theme.zIndex.drawer + 1,
+                zIndex: 2,
                 backgroundColor:'white',
                 boxShadow:0,
                 gap:{ xs: 0, md: 5 }
@@ -158,50 +157,7 @@ export default function MenuDrawer(props) {
             
             <Divider sx={{}}/>
         </AppBar>
-        </Box>
-
-        
-        
-        
-        
-    );
+    </>
 }
 
-
-{/* 
-<Box
-        component="nav"
-        sx={{ 
-            width: { md: drawerWidth }, flexShrink: { md: 0 } }}
-        aria-label="mailbox folders"
-        >
-            <Drawer
-            variant="temporary"
-            open={mobileOpen}
-            onTransitionEnd={handleDrawerTransitionEnd}
-            onClose={handleDrawerClose}
-            ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
-            }}
-            sx={{
-                display: { xs: 'block', md: 'none' },
-                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-            }}
-            >
-                {drawer}
-            </Drawer>
-
-            <Drawer
-            variant="permanent"
-            sx={{
-                display: { xs: 'none', md: 'block' },
-                '& .MuiDrawer-paper': { borderWidth: 0 ,boxSizing: 'border-box', width: drawerWidth },
-            }}
-            open
-            >
-            {drawer}
-            </Drawer>
-        </Box>
-
-        
-        </Box> */}
+export default NavBar;

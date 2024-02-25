@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-function HistoryCard() {
+function T_Card() {
   return (
     <>
       <Box
@@ -11,6 +11,7 @@ function HistoryCard() {
           height: 170,
           borderRadius: 5,
           boxShadow: 10,
+          mt:2
         }}
       >
         <Typography
@@ -19,13 +20,13 @@ function HistoryCard() {
             left: 55,
           }}
           sx={{
-            color: "#e8f5e9",
+            color: "#eceef7",
             fontWeight: 700,
             fontSize: 111,
             zIndex: "modal",
           }}
         >
-          D
+          T
         </Typography>
 
         <Box
@@ -38,7 +39,7 @@ function HistoryCard() {
         >
           <Typography
             sx={{
-              color: "#10C700",
+              color: "#2F69D9",
               fontWeight: 700,
               fontSize: 22,
               zIndex: "modal",
@@ -61,4 +62,4 @@ function HistoryCard() {
     </>
   );
 }
-export default HistoryCard;
+export default T_Card;
