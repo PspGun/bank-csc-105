@@ -19,7 +19,7 @@ db.connect((err) => {
 });
 
 app.get('/', (req, res) => {
-	res.send('Hello World!');
+	res.json('Hello World!');
 });
 app.use(express.json());
 app.use('/auth', authRouter);
