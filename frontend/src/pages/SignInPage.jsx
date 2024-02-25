@@ -66,7 +66,6 @@ function SignInPage() {
               error={userName === ""}
               helperText={!userName ? "Please enter your username" : ""}
               onChange={(e) => setUsername(e.target.value)}
-              required
             />
           </Box>
           <Box>
