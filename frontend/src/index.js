@@ -1,14 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignInPage from "./pages/SignInPage";
 import Homepage from "./pages/Homepage";
 import RegisterPage from "./pages/RegisterPage";
 import History from "./pages/History";
-import authMiddleware from "./utils/authMiddleware";
 
 const router = createBrowserRouter([
   {
