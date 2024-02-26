@@ -1,72 +1,98 @@
+import * as React from 'react';
 import { Box, Typography } from "@mui/material";
-import SideBar from "../components/sidebar";
-import DepositCard from "../components/DepositCard";
-import OptionCard from "../components/OptionCard";
-import BankAppBar from "../components/BankAppBar";
-import authMiddleware from "../utils/authMiddleware";
-function Homepage() {
-  return (
-    <>
-      <BankAppBar />
-      {/*---body---*/}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          height: "80%",
-          pt: "5%",
-        }}
-      >
-        <SideBar />
+import DepositCard from "../components/HomePage/DepositCard";
+import OptionCard from "../components/HomePage/OptionCard";
+import MenuDrawer from "../components/MenuDrawer";
+import BalanceCard from "../components/HomePage/BalanceCard";
+import TransactionCard from "../components/HomePage/TransactionCard";
+import NavBar from "../components/Navbar";
+import WithdrawCard from "../components/HomePage/WithdrawCard";
+import TransferCard from "../components/HomePage/TransferCard";
 
-        <DepositCard />
+class Homepage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      transactionType: "Deposit",
+    };
+  }
 
-        <OptionCard />
+  onOptionChange = (type) => {
+    let x = '' + type;
+    this.setState({transactionType:x});
+  }
 
-        {/*---Balance Card---*/}
+  render() {
+    return (
+      <>
+        {/*---body---*/}
         <Box
           sx={{
+            height: "100%",
+            width: "100%",
             display: "flex",
-            justifyContent: "start",
-            border: "2px solid black",
+            justifyContent: "center",
+            alignItems: "center",
             flexDirection: "column",
+            // backgroundColor:'#212121'
           }}
         >
+          <NavBar />
+
           <Box
             sx={{
+              height: "100%",
+              width: { md: "90%", xs: "100%" },
               display: "flex",
               justifyContent: "center",
-              flexDirection: "row",
-              gap: 2,
-              alignItems: "center",
+              flexDirection: { md: "row", xs: "column" },
+              p: { md: 3, xs: 0 },
+              gap: 5,
+              mt:{ md: 0, xs: 100 }
             }}
           >
-            <Typography variant="h5">Balance</Typography>
-            <Typography>KBUG Saving</Typography>
+            <MenuDrawer />
+
+            <Box
+              sx={{
+                width: { md: 600, xs: "100%" },
+                display: "flex",
+                justifyContent: "start",
+                alignItems: "start",
+                flexDirection: "column",
+                gap: 4,
+              }}
+            >
+                { this.state.transactionType == "Deposit" ? <DepositCard /> 
+                : this.state.transactionType == "Withdraw" ? <WithdrawCard />
+                : this.state.transactionType == "Transfer" ? <TransferCard />
+                : <DepositCard />}
+                
+    
+                <React.Fragment>
+                    <OptionCard option={this.onOptionChange} />
+                </React.Fragment>
+              
+            </Box>
+
+            <Box
+              sx={{
+                width: { md: 600, xs: "100%" },
+                display: "flex",
+                justifyContent: "start",
+                alignItems: "start",
+                flexDirection: "column",
+                gap: 4,
+              }}
+            >
+              <BalanceCard />
+              <TransactionCard />
+            </Box>
           </Box>
-
-          <Typography>My account</Typography>
-
-          <Typography>xxx-x-xx-xxx</Typography>
-
-          <Typography variant="h5">2,xxx,xxx</Typography>
         </Box>
-
-        {/*Recent Transaction*/}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "start",
-            border: "2px solid black",
-            flexDirection: "column",
-          }}
-        >
-          <Typography variant="h5">Recent Transaction</Typography>
-        </Box>
-      </Box>
-    </>
-  );
+      </>
+    );
+  }
 }
 
-const authHomePage = authMiddleware(Homepage);
-export default authHomePage;
+export default Homepage;
