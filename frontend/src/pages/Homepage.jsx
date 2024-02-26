@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import DepositCard from "../components/HomePage/DepositCard";
 import OptionCard from "../components/HomePage/OptionCard";
@@ -8,93 +8,57 @@ import TransactionCard from "../components/HomePage/TransactionCard";
 import NavBar from "../components/Navbar";
 import WithdrawCard from "../components/HomePage/WithdrawCard";
 import TransferCard from "../components/HomePage/TransferCard";
-import History from './History';
+import History from "./History";
+import authMiddleware from "../utils/authMiddleware";
 
-class Homepage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      transactionType: "Deposit",
-    };
-  }
+function Homepage() {
+  const [transactionType, setTransactionType] = useState("Deposit");
+  const onOptionChange = (type) => {
+    setTransactionType(type);
+  };
 
-  onOptionChange = (type) => {
-    let x = '' + type;
-    this.setState({transactionType:x});
-  }
+  return (
+    <>
+      <Box
+        sx={{
+          width: { md: 600, xs: "100%" },
+          display: "flex",
+          justifyContent: "start",
+          alignItems: "start",
+          flexDirection: "column",
+          gap: 4,
+        }}
+      >
+        {transactionType == "Deposit" ? (
+          <DepositCard />
+        ) : transactionType == "Withdraw" ? (
+          <WithdrawCard />
+        ) : transactionType == "Transfer" ? (
+          <TransferCard />
+        ) : (
+          <DepositCard />
+        )}
 
-  render() {
-    return (
-      <>
-        
-        {/* <Box
-          sx={{
-            height: "100%",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <NavBar />
+        <React.Fragment>
+          <OptionCard option={onOptionChange} />
+        </React.Fragment>
+      </Box>
 
-          <Box
-            sx={{
-              height: "100%",
-              width: { md: "90%", xs: "100%" },
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: { md: "row", xs: "column" },
-              p: { md: 3, xs: 0 },
-              gap: 5,
-              mt:{ md: 0, xs: 0 }
-            }}
-          >
-            <MenuDrawer />
-
-            <Box
-              sx={{
-                width: { md: 600, xs: "100%" },
-                display: "flex",
-                justifyContent: "start",
-                alignItems: "start",
-                flexDirection: "column",
-                gap: 4,
-              }}
-            >
-                { this.state.transactionType == "Deposit" ? <DepositCard /> 
-                : this.state.transactionType == "Withdraw" ? <WithdrawCard />
-                : this.state.transactionType == "Transfer" ? <TransferCard />
-                : <DepositCard />}
-                
-    
-                <React.Fragment>
-                    <OptionCard option={this.onOptionChange} />
-                </React.Fragment>
-              
-            </Box>
-
-            <Box
-              sx={{
-                width: { md: 600, xs: "100%" },
-                display: "flex",
-                justifyContent: "start",
-                alignItems: "start",
-                flexDirection: "column",
-                gap: 4,
-              }}
-            >
-              <BalanceCard />
-              <TransactionCard />
-            </Box>
-          </Box>
-        </Box> */}
-
-        <History/>
-      </>
-    );
-  }
+      <Box
+        sx={{
+          width: { md: 600, xs: "100%" },
+          display: "flex",
+          justifyContent: "start",
+          alignItems: "start",
+          flexDirection: "column",
+          gap: 4,
+        }}
+      >
+        <BalanceCard />
+        <TransactionCard />
+      </Box>
+    </>
+  );
 }
 
 export default Homepage;

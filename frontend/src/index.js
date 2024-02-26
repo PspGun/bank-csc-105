@@ -7,6 +7,7 @@ import SignInPage from "./pages/SignInPage";
 import Homepage from "./pages/Homepage";
 import RegisterPage from "./pages/RegisterPage";
 import History from "./pages/History";
+import MainPage from "./pages/MainPage";
 
 const router = createBrowserRouter([
   {
@@ -19,8 +20,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Homepage />,
+    element: <MainPage />,
     children: [
+      {
+        path: "",
+        element: <Homepage />,
+      },
       {
         path: "history",
         element: <History />,

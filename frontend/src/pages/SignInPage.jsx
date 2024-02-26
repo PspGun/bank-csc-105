@@ -12,6 +12,7 @@ import logo from "../assets/icon.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance";
+import Cookies from "js-cookie";
 function SignInPage() {
   const [userName, setUsername] = useState("");
   const [passWord, setPassword] = useState("");
@@ -24,7 +25,10 @@ function SignInPage() {
           password: passWord,
         });
         if (response.status === 200) {
-          localStorage.setItem("token", response.data.token);
+          Cookies.set("token", response.data.token, {
+            expires: 7,
+            secure: true,
+          });
           navigate("/");
         }
       } catch (error) {
