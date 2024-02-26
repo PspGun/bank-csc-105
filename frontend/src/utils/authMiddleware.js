@@ -1,9 +1,10 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const authMiddleware = (Component) => {
   return () => {
-    const isLoggedIn = localStorage.getItem("token") !== null; // Or your token storage logic
+    const isLoggedIn = Cookies.get("token") !== undefined;
 
     return isLoggedIn ? <Component /> : <Navigate to="/signin" replace />;
   };

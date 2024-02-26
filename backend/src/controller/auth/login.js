@@ -12,7 +12,9 @@ export const login = (req, res, next) => {
         if (err) {
           throw err;
         } else {
-          if (user[0].password != password) {
+          if (user.length == 0) {
+            return res.status(400).send("username not found");
+          } else if (user[0].password != password) {
             return res.status(400).send("password not correct");
           } else {
             const id = user[0].id;
