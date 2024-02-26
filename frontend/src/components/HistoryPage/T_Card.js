@@ -10,7 +10,7 @@ function T_Card() {
           width: 192,
           height: 170,
           borderRadius: 5,
-          boxShadow: 10,
+          boxShadow: 5,
           mt:2
         }}
       >
@@ -23,7 +23,7 @@ function T_Card() {
             color: "#eceef7",
             fontWeight: 700,
             fontSize: 111,
-            zIndex: "modal",
+            zIndex: 'drawer',
           }}
         >
           T
@@ -35,6 +35,7 @@ function T_Card() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            alignItems:'center'
           }}
         >
           <Typography
@@ -42,7 +43,7 @@ function T_Card() {
               color: "#2F69D9",
               fontWeight: 700,
               fontSize: 22,
-              zIndex: "modal",
+              zIndex: 'drawer',
             }}
           >
             + 1,234,123.00
@@ -52,7 +53,7 @@ function T_Card() {
             sx={{
               color: "#9B9B9B",
               fontSize: 12,
-              zIndex: "modal",
+              zIndex: 'drawer',
             }}
           >
             20 FEB 2024 06.50 PM

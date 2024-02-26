@@ -7,23 +7,23 @@ function D_Card() {
           position: "relative",
         }}
         sx={{
-          width: 192,
+          width: { md: 192, xs: 192 },
           height: 170,
           borderRadius: 5,
-          boxShadow: 10,
+          boxShadow: 5,
           mt:2
         }}
       >
         <Typography
           style={{
             position: "absolute",
-            left: 55,
+            left: "30%",
           }}
           sx={{
             color: "#ecf7ed",
             fontWeight: 700,
             fontSize: 111,
-            zIndex: "modal",
+            zIndex: 'drawer',
           }}
         >
           D
@@ -35,6 +35,7 @@ function D_Card() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            alignItems:'center'
           }}
         >
           <Typography
@@ -42,7 +43,7 @@ function D_Card() {
               color: "#10C700",
               fontWeight: 700,
               fontSize: 22,
-              zIndex: "modal",
+              zIndex: 'drawer',
             }}
           >
             + 1,234,123.00
@@ -52,7 +53,7 @@ function D_Card() {
             sx={{
               color: "#9B9B9B",
               fontSize: 12,
-              zIndex: "modal",
+              zIndex: 'drawer',
             }}
           >
             20 FEB 2024 06.50 PM

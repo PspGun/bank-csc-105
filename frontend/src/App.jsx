@@ -1,12 +1,11 @@
-import './App.css';
+import History from '@mui/icons-material/History';
 import Homepage from './pages/Homepage';
 
 function App() {
   return (
     <div className="App">
-      <Homepage/>
+      
     </div>
   );
 }
-
 export default App;

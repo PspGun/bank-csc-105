@@ -8,6 +8,7 @@ import TransactionCard from "../components/HomePage/TransactionCard";
 import NavBar from "../components/Navbar";
 import WithdrawCard from "../components/HomePage/WithdrawCard";
 import TransferCard from "../components/HomePage/TransferCard";
+import History from './History';
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -25,8 +26,8 @@ class Homepage extends React.Component {
   render() {
     return (
       <>
-        {/*---body---*/}
-        <Box
+        
+        {/* <Box
           sx={{
             height: "100%",
             width: "100%",
@@ -34,7 +35,6 @@ class Homepage extends React.Component {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            // backgroundColor:'#212121'
           }}
         >
           <NavBar />
@@ -48,7 +48,7 @@ class Homepage extends React.Component {
               flexDirection: { md: "row", xs: "column" },
               p: { md: 3, xs: 0 },
               gap: 5,
-              mt:{ md: 0, xs: 100 }
+              mt:{ md: 0, xs: 0 }
             }}
           >
             <MenuDrawer />
@@ -89,7 +89,9 @@ class Homepage extends React.Component {
               <TransactionCard />
             </Box>
           </Box>
-        </Box>
+        </Box> */}
+
+        <History/>
       </>
     );
   }
