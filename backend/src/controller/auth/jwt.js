@@ -16,3 +16,20 @@ export const validateToken = (token) => {
   const id = jwt.verify(token, key);
   return id.userId;
 };
+
+export const checkauth = (req, res, next) => {
+  try {
+    const token = req.header("authorization");
+    if (token) {
+      if (!jwt.verify(token.split(" ")[1], key)) {
+        throw err;
+      }
+    } else {
+      throw err;
+    }
+    next();
+  } catch (err) {
+    console.error(err);
+    return res.status(401).json({ success: false, message: "Invalid token" });
+  }
+};
