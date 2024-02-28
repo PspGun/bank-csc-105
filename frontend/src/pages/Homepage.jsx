@@ -1,21 +1,92 @@
-import React, { useState } from "react";
-import { Box, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box } from "@mui/material";
 import DepositCard from "../components/HomePage/DepositCard";
 import OptionCard from "../components/HomePage/OptionCard";
-import MenuDrawer from "../components/MenuDrawer";
 import BalanceCard from "../components/HomePage/BalanceCard";
 import TransactionCard from "../components/HomePage/TransactionCard";
-import NavBar from "../components/Navbar";
 import WithdrawCard from "../components/HomePage/WithdrawCard";
 import TransferCard from "../components/HomePage/TransferCard";
-import History from "./History";
-import authMiddleware from "../utils/authMiddleware";
+import axiosInstance from "../utils/axiosInstance";
 
 function Homepage() {
   const [transactionType, setTransactionType] = useState("Deposit");
   const onOptionChange = (type) => {
     setTransactionType(type);
   };
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axiosInstance.get("/user/");
+        console.log(response);
+        setUserData(response.data.data[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchUserData();
+  }, []);
+
+  const Transaction = {
+    Deposit: "Deposit",
+    Withdraw: "Withdraw",
+    Transfer: "Transfer"
+  }
+
+  
+  const handleWithdraw = async (amount, note) =>{
+    if(transactionType == Transaction.Withdraw){
+      try{
+        const response = await axiosInstance.post("/bank/withdraw",{
+            note: note,
+            amount: amount,
+            bank:"SCB",
+        })
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+  }
+
+  const handleTransfer = async (amount, note, receiver) =>{
+    if(transactionType == Transaction.Transfer){
+      if(amount !== 0 && receiver !== ""){
+      try{
+        const response = await axiosInstance.post("/bank/tranfer",{
+          receiver: receiver,
+          note: note,
+          amount: amount,
+          bank:"SCB",
+        })
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+  }
+  }
+
+  const handleDeposit = async (amount, note) =>{
+    
+    if(transactionType == Transaction.Deposit){
+      if(amount !== 0){
+        try{
+          const response = await axiosInstance.post("/bank/disposit",{
+            note: note,
+            amount: amount,
+            bank:"SCB",
+          })
+        }
+        catch(err){
+          console.log(err)
+        }
+      }
+    }
+  }
+
+
 
   return (
     <>
@@ -30,13 +101,21 @@ function Homepage() {
         }}
       >
         {transactionType == "Deposit" ? (
-          <DepositCard />
+          <DepositCard 
+            submit = {handleDeposit}
+          />
         ) : transactionType == "Withdraw" ? (
-          <WithdrawCard />
+          <WithdrawCard 
+            submit = {handleWithdraw}
+          />
         ) : transactionType == "Transfer" ? (
-          <TransferCard />
+          <TransferCard 
+            submit = {handleTransfer}
+          />
         ) : (
-          <DepositCard />
+          <DepositCard 
+            submit = {handleDeposit}
+          />
         )}
 
         <React.Fragment>
@@ -54,11 +133,10 @@ function Homepage() {
           gap: 4,
         }}
       >
-        <BalanceCard />
+        <BalanceCard balance={userData.balance}/>
         <TransactionCard />
       </Box>
     </>
   );
 }
-
 export default Homepage;

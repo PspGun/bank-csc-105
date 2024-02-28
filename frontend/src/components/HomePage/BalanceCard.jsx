@@ -1,7 +1,6 @@
 import { Box, Avatar, Typography } from "@mui/material";
-
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-function BalanceCard() {
+function BalanceCard({balance}) {
   return (
     <>
       <Box
@@ -52,7 +51,7 @@ function BalanceCard() {
               </Typography>
 
               <Typography variant="h3" style={{ fontWeight: 600 }}>
-                99999.99 THB
+                {balance} THB
               </Typography>
             </Box>
           

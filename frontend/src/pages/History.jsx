@@ -6,10 +6,37 @@ import Deposit from "./../assets/images/Deposit.png";
 import Transfer from "./../assets/images/Transfer.png";
 import Withdraw from "./../assets/images/Withdraw.png";
 import * as React from "react";
-import MenuDrawer from "../components/MenuDrawer";
-import NavBar from "../components/Navbar";
-
+import {  useEffect, useState } from "react";
+import axiosInstance from "../utils/axiosInstance";
 function History() {
+
+  const [userDeposit, setUserDeposit] = useState([]);
+  const [userWithdraw, setUserWithdraw] = useState([]);
+  const [userTransfer, setUserTransfer] = useState([]);
+
+  useEffect(() => {
+    const fetchUserHistory = async () => {
+      try {
+        const response = await axiosInstance.get("/bank/disposit");
+        // const transfer = await axiosInstance.get("/bank/tranfer");
+        // const withdraw = await axiosInstance.get("/bank/withdraw");
+        
+        setUserDeposit(response.data);
+        // setUserWithdraw(withdraw.data);
+        // setUserTransfer(transfer.data);
+
+        console.log(response);
+        // console.log(transfer.data);
+        // console.log(withdraw.data);
+        
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchUserHistory();
+  }, []);
+
+
   return (
     <>
       <Box
@@ -67,7 +94,7 @@ function History() {
                   gap: 3,
                 }}
               >
-                {["1", "2", "3", "4"].map((text, index) => (
+                {userDeposit.map((text, index) => (
                   <D_Card />
                 ))}
               </Box>

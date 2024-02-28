@@ -1,7 +1,20 @@
 import { Button, Box, TextField,Typography } from "@mui/material";
-function DepositCard(){
-    
+import { useState } from "react";
+function DepositCard({submit}){
 
+    const [transactionAmount, setTransactionAmount] = useState(0);
+    const [transactionNote, setTransactionNote] = useState("");
+    
+    const onSubmit = (amount, note) => {
+        try{
+
+            console.log(amount);
+            console.log(note);
+            submit(Number(amount), note);
+            console.log('success');
+        }
+        catch(err){console.log(err)}
+    }
 
     const bodyStyle = {
         display: 'flex', 
@@ -40,7 +53,7 @@ function DepositCard(){
                     <Typography
                         style={{fontWeight: 600,}}
                         sx={{
-                            typography: { md: 'h3', xs: 'h3' },
+                            typography: { xs: 'h3' },
                             color:'blue',
                             mb:'5%'}}>
                             Deposit
@@ -58,6 +71,9 @@ function DepositCard(){
                         </Typography>
 
                         <TextField
+                            onChange={(e) => {
+                                setTransactionAmount(e.target.value)
+                                console.log(transactionAmount)}}
                             sx={{width:"100%"}}
                             type="number"
                             required
@@ -79,14 +95,15 @@ function DepositCard(){
                         </Typography>
 
                         <TextField
+                            onChange={(e) => setTransactionNote(e.target.value)}
                             sx={{width:"100%"}}
-                            required
                             id="outlined-required"
                         />
 
                     </Box>
 
                     <Button 
+                        onClick={() => onSubmit(transactionAmount,transactionNote)}
                         variant="contained"
                         sx={{width:"100%",height:50}}>
                         <Typography

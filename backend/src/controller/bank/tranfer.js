@@ -38,7 +38,7 @@ export const tranfer = async (req, res, next) => {
     const user = await new Promise((resolve, reject) => {
       db.query(
         "SELECT balance, firstname, id FROM `users` WHERE id = ?",
-        [user_id],
+        [userId],
         (err, result) => {
           if (err) {
             reject(err);
@@ -50,7 +50,7 @@ export const tranfer = async (req, res, next) => {
     });
     const receive = await new Promise((resolve, reject) => {
       db.query(
-        "SELECT balance, firstname FROM `users` WHERE credit_ID = ?",
+        "SELECT balance, firstname, id  FROM `users` WHERE credit_ID = ?",
         [receiver],
         (err, result) => {
           if (err) {
@@ -66,7 +66,7 @@ export const tranfer = async (req, res, next) => {
       throw new Error("you don't have money enough to tranfer");
     }
     const data = [
-      [user_id, user.firstname, receiver, note, amount, bank, "tranfer"],
+      [userId, user.firstname, receiver, note, amount, bank, "tranfer"],
     ];
     db.query(
       "INSERT INTO banks (`owner`, `sender`, `receiver`,`note`, `amount`, `bank`, `type`) VALUES ?",
@@ -76,11 +76,13 @@ export const tranfer = async (req, res, next) => {
           throw err;
         } else {
           const update = [
-            [user.balance - amount, user_id],
+            [user.balance - amount, user.id],
             [receive.balance + amount, receive.id],
           ];
+          console.log(update);
+          console.log(receive);
           db.query("UPDATE users SET balance = ? WHERE id = ?", [
-            [update],
+            update,
             (err) => {
               if (err) {
                 throw err;

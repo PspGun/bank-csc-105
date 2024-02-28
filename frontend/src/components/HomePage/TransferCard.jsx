@@ -1,10 +1,21 @@
 import { Button, Box, TextField, Typography } from "@mui/material";
-function TransferCard() {
-  const cardStyle = {
-    width: 600,
-    display: "flex",
-    justifyContent: "center",
-  };
+import {  useState } from "react";
+function TransferCard({submit}) {
+  
+  const [transactionAmount, setTransactionAmount] = useState(0);
+  const [transactionNote, setTransactionNote] = useState("");
+  const [transactionTo, setTransactionTo] = useState("");
+    
+  const onSubmit = (amount, note, receiver) => {
+    try{
+      console.log(amount);
+      console.log(note);
+      console.log(receiver);
+      submit(Number(amount), note, receiver);
+      console.log('success');
+  }
+      catch(err){console.log(err)}
+  }
 
   const bodyStyle = {
     display: "flex",
@@ -24,25 +35,23 @@ function TransferCard() {
     flexDirection: "column",
   };
 
-  const fluidInput = {
-    width: "100%",
-    height: 47,
-  };
-
   return (
     <>
       <Box
-        style={cardStyle}
         sx={{
-          borderRadius: "5%",
+          width: { md: 600, xs: "100%" },
+          display: "flex",
+          justifyContent: "center",
+          borderRadius: 5,
           boxShadow: 10,
+          mt: { md: 0, xs: 10 },
         }}
       >
         <Box style={bodyStyle}>
           <Typography
             style={{ fontWeight: 600 }}
             sx={{
-              typography: { md: "h3", xs: "h5" },
+              typography: { xs: "h3"},
               color: "blue",
               mb: "5%",
             }}
@@ -61,7 +70,10 @@ function TransferCard() {
             </Typography>
 
             <TextField
-              style={fluidInput}
+              onChange={(e) => {
+                setTransactionAmount(e.target.value)
+                console.log(transactionAmount)}}
+              sx={{ width: "100%" }}
               type="number"
               required
               id="outlined-required"
@@ -80,7 +92,10 @@ function TransferCard() {
             </Typography>
 
             <TextField
-              style={fluidInput}
+              onChange={(e) => {
+                setTransactionTo(e.target.value)
+                console.log(transactionTo)}}
+              sx={{ width: "100%" }}
               required
               id="outlined-required"
             />
@@ -98,14 +113,16 @@ function TransferCard() {
             </Typography>
 
             <TextField
-              style={fluidInput}
-              sx={{}}
-              required
+              onChange={(e) => setTransactionNote(e.target.value)}
+              sx={{ width: "100%" }}
               id="outlined-required"
             />
           </Box>
 
-          <Button variant="contained" style={fluidInput}>
+          <Button
+            onClick={() => onSubmit(transactionAmount,transactionNote,transactionTo)} 
+            variant="contained" 
+            sx={{ width: "100%", height: 50 }}>
             <Typography
               sx={{
                 typography: { md: "h5", xs: "subtitle1" },
