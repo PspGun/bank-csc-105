@@ -1,5 +1,6 @@
 import db from "../../db/connect.js";
 import { validateToken } from "../auth/jwt.js";
+import timeStamp from "../../utill/timeStamp.js";
 export const getDeposit = (req, res) => {
   const token = req.header("authorization").split(" ")[1];
   const userId = validateToken(token);
@@ -47,11 +48,21 @@ export const disposit = async (req, res, next) => {
         }
       );
     });
+
     const data = [
-      [userId, user.firstname, receiver, note, amount, bank, "disposit"],
+      [
+        userId,
+        user.firstname,
+        receiver,
+        note,
+        amount,
+        bank,
+        "disposit",
+        timeStamp(),
+      ],
     ];
     db.query(
-      "INSERT INTO banks (`owner`, `sender`, `receiver`,`note`, `amount`, `bank`, `type`) VALUES ?",
+      "INSERT INTO banks (`owner`, `sender`, `receiver`,`note`, `amount`, `bank`, `type`, `date`) VALUES ?",
       [data],
       (err, result) => {
         if (err) {
