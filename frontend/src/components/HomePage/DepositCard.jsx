@@ -54,7 +54,7 @@ function DepositCard({submit}){
                         style={{fontWeight: 600,}}
                         sx={{
                             typography: { xs: 'h3' },
-                            color:'blue',
+                            color:'#2F69D9',
                             mb:'5%'}}>
                             Deposit
                     </Typography>
@@ -103,9 +103,10 @@ function DepositCard({submit}){
                     </Box>
 
                     <Button 
+                    ba
                         onClick={() => onSubmit(transactionAmount,transactionNote)}
                         variant="contained"
-                        sx={{width:"100%",height:50}}>
+                        sx={{width:"100%",height:50,backgroundColor:"#2F69D9"}}>
                         <Typography
                         sx={{
                             typography: { md: 'h5', xs: 'subtitle1' }}}>

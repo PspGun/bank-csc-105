@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 function D_Card({amount, date}) {
 
-  
+  const isMillion = amount > 1000000 ? true : false;
   const x = new Date(date);
   const strDate = x.toUTCString();  
   return (
@@ -51,7 +51,8 @@ function D_Card({amount, date}) {
               zIndex: 'drawer',
             }}
           >
-            + {new Intl.NumberFormat().format(amount)} THB
+            + {isMillion ? new Intl.NumberFormat().format(amount/1000000.0) : new Intl.NumberFormat().format(amount)} 
+              {isMillion ? "M THB" : "THB"}
           </Typography>
 
           <Typography

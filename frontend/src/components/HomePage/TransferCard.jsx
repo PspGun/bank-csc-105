@@ -52,7 +52,7 @@ function TransferCard({submit}) {
             style={{ fontWeight: 600 }}
             sx={{
               typography: { xs: "h3"},
-              color: "blue",
+              color: "#2F69D9",
               mb: "5%",
             }}
           >

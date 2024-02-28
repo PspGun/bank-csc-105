@@ -17,7 +17,7 @@ function History() {
   useEffect(() => {
     const fetchUserHistory = async () => {
       try {
-        const deposit = await axiosInstance.get("/bank/disposit");
+        const deposit = await axiosInstance.get("/bank/deposit");
         const transfer = await axiosInstance.get("/bank/tranfer");
         const withdraw = await axiosInstance.get("/bank/withdraw");
         
@@ -80,11 +80,10 @@ function History() {
             <Avatar src={Deposit} />
           </Box>
 
-          <Box sx={{ width: { md: 1200, xs: 410 } }}>
-            <div style={{ width: "100%" }}>
+
               <Box
-                component="div"
                 sx={{
+                  width: { md: 1200, xs: 410 },
                   display: "flex",
                   flexDirection: "row",
                   whiteSpace: "nowrap",
@@ -104,8 +103,6 @@ function History() {
                 ))
               }
               </Box>
-            </div>
-          </Box>
         </Box>
 
         <Box
@@ -131,11 +128,10 @@ function History() {
             <Avatar src={Withdraw} />
           </Box>
 
-          <Box sx={{ width: { md: 1200, xs: 410 } }}>
-            <div style={{ width: "100%" }}>
+
               <Box
-                component="div"
                 sx={{
+                  width: { md: 1200, xs: 410 },
                   display: "flex",
                   flexDirection: "row",
                   whiteSpace: "nowrap",
@@ -156,8 +152,6 @@ function History() {
               }
                 
               </Box>
-            </div>
-          </Box>
         </Box>
 
         <Box
@@ -183,11 +177,11 @@ function History() {
             <Avatar src={Transfer} />
           </Box>
 
-          <Box sx={{ width: { md: 1200, xs: 410 } }}>
-            <div style={{ width: "100%" }}>
+         
               <Box
                 component="div"
                 sx={{
+                  width: { md: 1200, xs: 410 },
                   display: "flex",
                   flexDirection: "row",
                   whiteSpace: "nowrap",
@@ -207,8 +201,7 @@ function History() {
                 ))
               }
               </Box>
-            </div>
-          </Box>
+
         </Box>
       </Box>
     </>
