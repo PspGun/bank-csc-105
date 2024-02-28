@@ -29,7 +29,7 @@ function BalanceCard({balance}) {
         >
           <Box
             sx={{
-              width: 320,
+              width: 350,
               display: "flex",
               flexDirection: "column",
               alignItems: "start",
@@ -50,8 +50,8 @@ function BalanceCard({balance}) {
                 XXX-X-X3154-X
               </Typography>
 
-              <Typography variant="h3" style={{ fontWeight: 600 }}>
-                {balance} THB
+              <Typography variant="h4" style={{ fontWeight: 600 }}>
+                {new Intl.NumberFormat().format(balance)} THB
               </Typography>
             </Box>
           

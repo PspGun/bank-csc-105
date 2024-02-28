@@ -28,7 +28,28 @@ function TransactionCard(){
                     Recent Transactions
                 </Typography>
 
-                <TransactionList/>
+                <Box sx={{ width: '100%', height:300 }}>
+            <div style={{ width: "100%", height:'100%'}}>
+              <Box
+                component="div"
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  whiteSpace: "nowrap",
+                  overflowY: "auto",
+                  borderRadius: 2,
+                  p: 1,
+                  gap: 3,
+                }}
+              >
+                {
+                ['1','1','1','1','1','1','1','1'].map((text, index) => (
+                    <TransactionList/>
+                ))
+                }
+              </Box>
+            </div>
+          </Box>
 
             </Box>
         </Box>

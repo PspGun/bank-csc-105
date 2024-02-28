@@ -38,7 +38,7 @@ export const withdraw = async (req, res, next) => {
     const user = await new Promise((resolve, reject) => {
       db.query(
         "SELECT balance, firstname FROM `users` WHERE id = ?",
-        [user_id],
+        [userId],
         (err, result) => {
           if (err) {
             reject(err);
@@ -52,7 +52,7 @@ export const withdraw = async (req, res, next) => {
       throw new Error("you don't have money enough to with draw");
     }
     const data = [
-      [user_id, user.firstname, receiver, note, amount, bank, "withdraw"],
+      [userId, user.firstname, receiver, note, amount, bank, "withdraw"],
     ];
     db.query(
       "INSERT INTO banks (`owner`, `sender`, `receiver`,`note`, `amount`, `bank`, `type`) VALUES ?",
@@ -63,7 +63,7 @@ export const withdraw = async (req, res, next) => {
         } else {
           db.query("UPDATE users SET balance = ? WHERE id = ?", [
             user.balance - amount,
-            user_id,
+            userId,
             (err) => {
               if (err) {
                 throw err;
