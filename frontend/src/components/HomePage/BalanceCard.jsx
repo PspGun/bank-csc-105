@@ -10,7 +10,7 @@ function BalanceCard({balance}) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          borderRadius: { md: 5 ,xs: 2 },
+          borderRadius: 5,
           boxShadow: 10,
           py: { md: 0, xs: 2 },
           color: "white",

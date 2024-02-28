@@ -73,7 +73,7 @@ function Homepage() {
     if(transactionType == Transaction.Deposit){
       if(amount !== 0){
         try{
-          const response = await axiosInstance.post("/bank/disposit",{
+          const response = await axiosInstance.post("/bank/deposit",{
             note: note,
             amount: amount,
             bank:"SCB",
@@ -87,17 +87,17 @@ function Homepage() {
   }
 
 
-
   return (
     <>
       <Box
         sx={{
-          width: { md: 600, xs: "100%" },
+          width: { md: 600, xs: "90%" },
           display: "flex",
           justifyContent: "start",
           alignItems: "start",
           flexDirection: "column",
           gap: 4,
+          p: { md: 0, xs: 2 },
         }}
       >
         {transactionType == "Deposit" ? (
@@ -125,12 +125,13 @@ function Homepage() {
 
       <Box
         sx={{
-          width: { md: 600, xs: "100%" },
+          width: { md: 600, xs: "90%" },
           display: "flex",
           justifyContent: "start",
           alignItems: "start",
           flexDirection: "column",
           gap: 4,
+          p: { md: 0, xs: 2 },
         }}
       >
         <BalanceCard balance={userData.balance}/>

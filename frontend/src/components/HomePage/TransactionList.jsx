@@ -1,14 +1,23 @@
 import { Box, Typography } from "@mui/material";
 
-function TransactionList() {
+function TransactionList({amount, date, type}) {
+
+  const x = new Date(date);
+  const strDate = x.toUTCString(); 
+  const transDate =  strDate.slice(5, 16);
+  const transTime = strDate.slice(17, 25);
+
+ 
   return (
+    
     <>
+
       <Box
         sx={{
             width: "100%",
             display: "flex",
             flexDirection: "column",
-            gap:2
+            gap:2,
         }}
       >
         
@@ -29,24 +38,29 @@ function TransactionList() {
                 alignItems: "start",
               }}
             >
-              <Typography style={{ fontWeight: 600 }}>Deposit</Typography>
+              <Typography 
+              variant="h5" 
+              sx={{ fontWeight: 600,
+                    color:  (type === "deposit")  ? "#10C700" :
+                            (type === "withdraw") ?"#ED4141" : 
+                            "#2F69D9"}}
+              >{type}</Typography>
 
-              <Typography>amount</Typography>
+              <Typography variant="h5" sx={{fontWeight: 600}}>{new Intl.NumberFormat().format(amount)} THB</Typography>
             </Box>
 
             <Box
               sx={{
-                width: "100%",
+                width: 100,
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "start",
                 alignItems: "end",
               }}
             >
-              <Typography style={{ fontWeight: 600 }}>Date</Typography>
-
-              <Typography>Time</Typography>
-            </Box>
+              <Typography variant="h6" style={{ fontWeight: 600 }}>{transDate}</Typography>
+              <Typography variant="h6" style={{ fontWeight: 600 }}>{transTime}</Typography>
+              </Box>
           </Box>
         
       </Box>
