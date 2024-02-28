@@ -1,6 +1,6 @@
 import db from "../../db/connect.js";
 export const getHistory = (req, res) => {
-  db.query("SELECT * FROM `banks` ORDER BY date DESC", (err, re) => {
+  db.query("SELECT * FROM `banks` ORDER BY `date` DESC", (err, re) => {
     if (err) {
       res.json({
         success: false,
