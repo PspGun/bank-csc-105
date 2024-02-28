@@ -67,6 +67,7 @@ export default function MenuDrawer(props) {
                   color: location.pathname === "/" ? "white" : "black",
                   borderRadius: 3,
                   p: 2,
+                  ":hover":{color:'black'}
                 }}
               >
                 <HomeIcon sx={{ mr: 3 }} />
@@ -85,6 +86,7 @@ export default function MenuDrawer(props) {
                   color: location.pathname === "/history" ? "white" : "black",
                   borderRadius: 3,
                   p: 2,
+                  ":hover":{color:'black'}
                 }}
               >
                 <HistoryIcon sx={{ mr: 3 }} />
@@ -105,6 +107,7 @@ export default function MenuDrawer(props) {
                 color: "black",
                 borderRadius: 3,
                 p: 2,
+                ":hover":{color:'black'}
               }}
               onClick={() => {
                 Cookies.remove("token");

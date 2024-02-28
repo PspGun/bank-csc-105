@@ -1,113 +1,121 @@
-import { Button, Box, TextField,Typography } from "@mui/material";
-function WithdrawCard(){
+import { Button, Box, TextField, Typography } from "@mui/material";
+import { useState } from "react";
+function WithdrawCard({submit}) {
+  
+  const [transactionAmount, setTransactionAmount] = useState(0);
+  const [transactionNote, setTransactionNote] = useState("");
     
-    const cardStyle = {
-        width: 600,
-        display: 'flex', 
-        justifyContent: 'center',
-        
-    };
+  const onSubmit = (amount, note) => {
+    try{
 
-    const bodyStyle = {
-        display: 'flex', 
-        width:'50%',
-        height:530,
-        flexDirection: 'column',
-        alignItems:'center',
-        justifyContent: 'center',
-        gap: 20,
+      console.log(amount);
+      console.log(note);
+      submit(Number(amount), note);
+      console.log('success');
+  }
+      catch(err){console.log(err)}
+  }
 
-    };
+  const bodyStyle = {
+    display: "flex",
+    width: "50%",
+    height: 530,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 20,
 
-    const inputStyle = {
-        display: 'flex', 
-        width:'100%',
-        height:'20%',
-        alignItems:'flex-start',
-        flexDirection: 'column',
-        
-    };
+  };
 
-    const fluidInput = {
-        width:'100%',
-        height:47,
-    };
+  const inputStyle = {
+    display: "flex",
+    width: "100%",
+    height: "20%",
+    alignItems: "flex-start",
+    flexDirection: "column",
 
-    return <>
-        <Box 
-            style={cardStyle}
+  };
+
+  return (
+    <>
+      <Box
+        sx={{
+          width: { md: 600, xs: "100%" },
+          display: "flex",
+          justifyContent: "center",
+          borderRadius: 5,
+          boxShadow: 10,
+          mt: { md: 0, xs: 10 },
+        }}
+      >
+        <Box style={bodyStyle}>
+          <Typography
+            style={{ fontWeight: 600 }}
             sx={{
-                borderRadius: '5%',
-                boxShadow: 10}}
-        >
+              typography: { xs: "h3" },
+              color: "blue",
+              mb: "5%",
+            }}
+          >
+            Withdraw
+          </Typography>
 
-            <Box 
-                style={bodyStyle}>
+          <Box style={inputStyle}>
+            <Typography
+              sx={{
+                mb: "5%",
+                typography: { md: "h5", xs: "subtitle1" },
+              }}
+            >
+              Amount
+            </Typography>
 
-                    <Typography
-                        style={{fontWeight: 600,}}
-                        sx={{
-                            typography: { md: 'h3', xs: 'h5' },
-                            color:'blue',
-                            mb:'5%'}}>
-                            Withdraw
-                    </Typography>
+            <TextField
+              onChange={(e) => {
+                setTransactionAmount(e.target.value)
+                console.log(transactionAmount)}}
+              sx={{ width: "100%" }}
+              type="number"
+              required
+              id="outlined-required"
+              placeholder="0.00"
+            />
+          </Box>
 
+          <Box style={inputStyle}>
+            <Typography
+              variant="h5"
+              sx={{
+                mb: "5%",
+                typography: { md: "h5", xs: "subtitle1" },
+              }}
+            >
+              Note {"(optional)"}
+            </Typography>
 
+            <TextField
+              onChange={(e) => setTransactionNote(e.target.value)}
+              sx={{ width: "100%" }}
+              id="outlined-required"
+            />
+          </Box>
 
-                    <Box style={inputStyle}>
-
-                        <Typography 
-                            sx={{
-                                mb:'5%',
-                                typography: { md: 'h5', xs: 'subtitle1' },}}>
-                            Amount
-                        </Typography>
-
-                        <TextField
-                            
-                            style={fluidInput}
-                            type="number"
-                            required
-                            id="outlined-required"
-                            placeholder="0.00"
-                        />
-
-                    </Box>
-
-
-                    <Box style={inputStyle}>
-
-                        <Typography 
-                            variant="h5"
-                            sx={{
-                                mb:'5%',
-                                typography: { md: 'h5', xs: 'subtitle1' },}}>
-                            Note {"(optional)"}
-                        </Typography>
-
-                        <TextField
-                            style={fluidInput}
-                            sx={{
-                            }}
-                            required
-                            id="outlined-required"
-                        />
-
-                    </Box>
-
-                    <Button 
-                        variant="contained"
-                        style={fluidInput}>
-                        <Typography
-                        sx={{
-                            typography: { md: 'h5', xs: 'subtitle1' }}}>
-                        Withdraw
-                        </Typography>
-                    </Button>
-
-            </Box>
+          <Button 
+            onClick={() => onSubmit(transactionAmount,transactionNote)}
+            variant="contained" 
+            sx={{ width: "100%", height: 50 }}
+            >
+            <Typography
+              sx={{
+                typography: { md: "h5", xs: "subtitle1" },
+              }}
+            >
+              Withdraw
+            </Typography>
+          </Button>
         </Box>
+      </Box>
     </>
+  );
 }
 export default WithdrawCard;

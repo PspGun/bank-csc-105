@@ -5,16 +5,11 @@ import Deposit from "./../../assets/images/Deposit.png";
 import Transfer from "./../../assets/images/Transfer.png";
 import Withdraw from "./../../assets/images/Withdraw.png";
 
-class OptionCard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+function OptionCard({option}) {
 
-  onOptionClick = (x) => {
-    this.props.option(x);
+  const onOptionClick = (x) => {
+    option(x);
   }
-
-  render() {
     return (
       <>
       <React.Fragment>
@@ -47,7 +42,7 @@ class OptionCard extends React.Component {
                 justifyContent: "space-around",
               }}
             >
-              <IconButton onClick={() => this.onOptionClick('Deposit')} sx={{ borderRadius: 5 }}>
+              <IconButton onClick={() => onOptionClick('Deposit')} sx={{ borderRadius: 5 }}>
                 <Box
                   sx={{
                     display: "flex",
@@ -62,7 +57,7 @@ class OptionCard extends React.Component {
                 </Box>
               </IconButton>
 
-              <IconButton onClick={() => this.onOptionClick('Transfer')} sx={{ borderRadius: 5 }}>
+              <IconButton onClick={() => onOptionClick('Transfer')} sx={{ borderRadius: 5 }}>
                 <Box
                   sx={{
                     display: "flex",
@@ -77,7 +72,7 @@ class OptionCard extends React.Component {
                 </Box>
               </IconButton>
 
-              <IconButton onClick={() => this.onOptionClick('Withdraw')} sx={{ borderRadius: 5 }}>
+              <IconButton onClick={() => onOptionClick('Withdraw')} sx={{ borderRadius: 5 }}>
                 <Box
                   sx={{
                     display: "flex",
@@ -100,5 +95,5 @@ class OptionCard extends React.Component {
       </>
     );
   }
-}
+
 export default OptionCard;
