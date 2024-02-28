@@ -1,4 +1,5 @@
 import db from "../../db/connect.js";
+import timeStamp from "../../utill/timeStamp.js";
 import { validateToken } from "../auth/jwt.js";
 
 export const getTranfer = (req, res) => {
@@ -66,10 +67,19 @@ export const tranfer = async (req, res, next) => {
       throw new Error("you don't have money enough to tranfer");
     }
     const data = [
-      [userId, user.firstname, receiver, note, amount, bank, "tranfer"],
+      [
+        userId,
+        user.firstname,
+        receiver,
+        note,
+        amount,
+        bank,
+        "tranfer",
+        timeStamp(),
+      ],
     ];
     db.query(
-      "INSERT INTO banks (`owner`, `sender`, `receiver`,`note`, `amount`, `bank`, `type`) VALUES ?",
+      "INSERT INTO banks (`owner`, `sender`, `receiver`,`note`, `amount`, `bank`, `type`,`date`) VALUES ?",
       [data],
       (err, result) => {
         if (err) {
