@@ -1,7 +1,6 @@
 import { Box, Avatar, Typography } from "@mui/material";
-
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-function BalanceCard() {
+function BalanceCard({balance}) {
   return (
     <>
       <Box
@@ -30,7 +29,7 @@ function BalanceCard() {
         >
           <Box
             sx={{
-              width: 320,
+              width: 350,
               display: "flex",
               flexDirection: "column",
               alignItems: "start",
@@ -51,8 +50,8 @@ function BalanceCard() {
                 XXX-X-X3154-X
               </Typography>
 
-              <Typography variant="h3" style={{ fontWeight: 600 }}>
-                99999.99 THB
+              <Typography variant="h4" style={{ fontWeight: 600 }}>
+                {new Intl.NumberFormat().format(balance)} THB
               </Typography>
             </Box>
           

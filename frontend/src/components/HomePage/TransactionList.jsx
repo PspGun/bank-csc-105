@@ -11,7 +11,7 @@ function TransactionList() {
             gap:2
         }}
       >
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        
           <Box
             sx={{
               width: "100%",
@@ -48,7 +48,7 @@ function TransactionList() {
               <Typography>Time</Typography>
             </Box>
           </Box>
-        ))}
+        
       </Box>
     </>
   );

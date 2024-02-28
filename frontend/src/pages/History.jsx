@@ -6,10 +6,37 @@ import Deposit from "./../assets/images/Deposit.png";
 import Transfer from "./../assets/images/Transfer.png";
 import Withdraw from "./../assets/images/Withdraw.png";
 import * as React from "react";
-import MenuDrawer from "../components/MenuDrawer";
-import NavBar from "../components/Navbar";
-
+import {  useEffect, useState } from "react";
+import axiosInstance from "../utils/axiosInstance";
 function History() {
+
+  const [userDeposit, setUserDeposit] = useState([]);
+  const [userWithdraw, setUserWithdraw] = useState([]);
+  const [userTransfer, setUserTransfer] = useState([]);
+
+  useEffect(() => {
+    const fetchUserHistory = async () => {
+      try {
+        const deposit = await axiosInstance.get("/bank/disposit");
+        const transfer = await axiosInstance.get("/bank/tranfer");
+        const withdraw = await axiosInstance.get("/bank/withdraw");
+        
+        setUserDeposit(deposit.data.data);
+        setUserWithdraw(withdraw.data.data);
+        setUserTransfer(transfer.data.data);
+
+        console.log(deposit);
+        console.log(transfer);
+        console.log(withdraw);
+        
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchUserHistory();
+  }, []);
+
+
   return (
     <>
       <Box
@@ -67,9 +94,15 @@ function History() {
                   gap: 3,
                 }}
               >
-                {["1", "2", "3", "4"].map((text, index) => (
-                  <D_Card />
-                ))}
+                {userDeposit.length == 0 ? 
+                <Box sx={{height:170}}></Box>: 
+                userDeposit.map((deposit) => (
+                  <D_Card 
+                  amount={deposit.amount} date={deposit.date}
+
+                  />
+                ))
+              }
               </Box>
             </div>
           </Box>
@@ -112,9 +145,16 @@ function History() {
                   gap: 3,
                 }}
               >
-                {["1", "2", "3", "4"].map((text, index) => (
-                  <W_Card />
-                ))}
+              {userWithdraw.length == 0 ? 
+                <Box sx={{height:170}}></Box>: 
+                userWithdraw.map((withdraw) => (
+                  <W_Card  
+                  amount={withdraw.amount} date={withdraw.date}
+
+                  />
+                ))
+              }
+                
               </Box>
             </div>
           </Box>
@@ -157,9 +197,15 @@ function History() {
                   gap: 3,
                 }}
               >
-                {["1", "2", "3", "4"].map((text, index) => (
-                  <T_Card />
-                ))}
+                {userTransfer.length == 0 ? 
+                <Box sx={{height:170}}></Box>: 
+                userTransfer.map((tranfer) => (
+                  <T_Card  
+                  amount={tranfer.amount} date={tranfer.date}
+
+                  />
+                ))
+              }
               </Box>
             </div>
           </Box>

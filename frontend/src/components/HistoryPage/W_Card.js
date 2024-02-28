@@ -1,5 +1,7 @@
 import { Box, Typography } from "@mui/material";
-function W_Card() {
+function W_Card({amount, date}) {
+  const x = new Date(date);
+  const strDate = x.toUTCString();  
   return (
     <>
       <Box
@@ -46,7 +48,7 @@ function W_Card() {
               zIndex: 'drawer',
             }}
           >
-            - 1,234,123.00
+            - {new Intl.NumberFormat().format(amount)} THB
           </Typography>
 
           <Typography
@@ -56,7 +58,7 @@ function W_Card() {
               zIndex: 'drawer',
             }}
           >
-            20 FEB 2024 06.50 PM
+            {strDate}
           </Typography>
         </Box>
       </Box>
