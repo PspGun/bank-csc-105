@@ -50,7 +50,7 @@ export const tranfer = async (req, res, next) => {
     });
     const receive = await new Promise((resolve, reject) => {
       db.query(
-        "SELECT balance, firstname, id  FROM `users` WHERE credit_ID = ?",
+        "SELECT id, balance, firstname FROM `users` WHERE credit_ID = ?",
         [receiver],
         (err, result) => {
           if (err) {
@@ -75,14 +75,20 @@ export const tranfer = async (req, res, next) => {
         if (err) {
           throw err;
         } else {
-          const update = [
-            [user.balance - amount, user.id],
-            [receive.balance + amount, receive.id],
-          ];
-          console.log(update);
-          console.log(receive);
+          const userBalance = user.balance - amount;
+          const receiveBalance = receive.balance + amount;
           db.query("UPDATE users SET balance = ? WHERE id = ?", [
-            update,
+            userBalance,
+            userId,
+            (err) => {
+              if (err) {
+                throw err;
+              }
+            },
+          ]);
+          db.query("UPDATE users SET balance = ? WHERE id = ?", [
+            receiveBalance,
+            receive.id,
             (err) => {
               if (err) {
                 throw err;
