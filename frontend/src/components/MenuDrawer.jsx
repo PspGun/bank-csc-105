@@ -13,9 +13,8 @@ import Cookies from "js-cookie";
 
 const buttonWidth = 200;
 
-export default function MenuDrawer(props) {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isClosing, setIsClosing] = React.useState(false);
+export default function MenuDrawer() {
+
   const location = useLocation();
   const navigate = useNavigate();
 

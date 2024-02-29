@@ -20,7 +20,6 @@ function NavBar(props) {
   const drawerWidth = 361;
   const buttonWidth = 200;
 
-  const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
 
