@@ -103,7 +103,7 @@ function DepositCard({submit}){
                     </Box>
 
                     <Button 
-                    ba
+                    
                         onClick={() => onSubmit(transactionAmount,transactionNote)}
                         variant="contained"
                         sx={{width:"100%",height:50,backgroundColor:"#2F69D9"}}>

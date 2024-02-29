@@ -12,13 +12,18 @@ import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import HomeIcon from "@mui/icons-material/Home";
 import HistoryIcon from "@mui/icons-material/History";
-
+import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import logo from "./../assets/images/LOGO.png";
 import kbug from "./../assets/images/KBUG.png";
 
-function NavBar(props) {
+function NavBar() {
   const drawerWidth = 361;
   const buttonWidth = 200;
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
@@ -49,11 +54,13 @@ function NavBar(props) {
       >
         <List>
           <ListItem key={"HomePage"}>
+          <Link to="/" style={{ textDecoration: "none" }}>
             <ListItemButton
               sx={{
                 width: buttonWidth,
-                backgroundColor: "#2F69D9",
-                color: "white",
+                backgroundColor:
+                    location.pathname === "/" ? "#2F69D9" : "#eeeeee",
+                  color: location.pathname === "/" ? "white" : "black",
                 borderRadius: 3,
                 p: 2,
               }}
@@ -61,14 +68,17 @@ function NavBar(props) {
               <HomeIcon sx={{ mr: 3 }} />
               <ListItemText primary={"Home"} />
             </ListItemButton>
+            </Link>
           </ListItem>
 
           <ListItem key={"HistoryPage"}>
+            <Link to="/history" style={{ textDecoration: "none" }}>
             <ListItemButton
               sx={{
                 width: buttonWidth,
-                backgroundColor: "#eeeeee",
-                color: "black",
+                backgroundColor:
+                    location.pathname === "/history" ? "#2F69D9" : "#eeeeee",
+                  color: location.pathname === "/history" ? "white" : "black",
                 borderRadius: 3,
                 p: 2,
               }}
@@ -76,6 +86,7 @@ function NavBar(props) {
               <HistoryIcon sx={{ mr: 3 }} />
               <ListItemText primary={"History Page"} />
             </ListItemButton>
+            </Link>
           </ListItem>
         </List>
 
@@ -90,6 +101,10 @@ function NavBar(props) {
                 color: "black",
                 borderRadius: 3,
                 p: 2,
+              }}
+              onClick={() => {
+                Cookies.remove("token");
+                navigate("/signin");
               }}
             >
               <HistoryIcon sx={{ mr: 3 }} />

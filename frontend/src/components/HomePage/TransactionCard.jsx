@@ -65,7 +65,7 @@ function TransactionCard(){
               >
                 {
                   userDeposit.map((transaction) => (
-                    <TransactionList amount={transaction.amount} date={transaction.date} type={transaction.type}/>
+                    <TransactionList key={transaction.bank_id} amount={transaction.amount} date={transaction.date} type={transaction.type}/>
                 ))
                 }
               </Box>
