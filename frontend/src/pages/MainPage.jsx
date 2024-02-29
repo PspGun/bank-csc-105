@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import NavBar from "../components/Navbar";
 import MenuDrawer from "../components/MenuDrawer";
 import { Outlet } from "react-router-dom";

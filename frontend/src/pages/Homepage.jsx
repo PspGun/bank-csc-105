@@ -36,13 +36,14 @@ function Homepage() {
 
   
   const handleWithdraw = async (amount, note) =>{
-    if(transactionType == Transaction.Withdraw){
+    if(transactionType === Transaction.Withdraw){
       try{
         const response = await axiosInstance.post("/bank/withdraw",{
             note: note,
             amount: amount,
             bank:"SCB",
         })
+        console.log(response)
       }
       catch(err){
         console.log(err)
@@ -51,7 +52,7 @@ function Homepage() {
   }
 
   const handleTransfer = async (amount, note, receiver) =>{
-    if(transactionType == Transaction.Transfer){
+    if(transactionType === Transaction.Transfer){
       if(amount !== 0 && receiver !== ""){
       try{
         const response = await axiosInstance.post("/bank/tranfer",{
@@ -60,6 +61,7 @@ function Homepage() {
           amount: amount,
           bank:"SCB",
         })
+        console.log(response)
       }
       catch(err){
         console.log(err)
@@ -70,7 +72,7 @@ function Homepage() {
 
   const handleDeposit = async (amount, note) =>{
     
-    if(transactionType == Transaction.Deposit){
+    if(transactionType === Transaction.Deposit){
       if(amount !== 0){
         try{
           const response = await axiosInstance.post("/bank/deposit",{
@@ -78,6 +80,7 @@ function Homepage() {
             amount: amount,
             bank:"SCB",
           })
+          console.log(response)
         }
         catch(err){
           console.log(err)
@@ -100,15 +103,15 @@ function Homepage() {
           p: { md: 0, xs: 2 },
         }}
       >
-        {transactionType == "Deposit" ? (
+        {transactionType === "Deposit" ? (
           <DepositCard 
             submit = {handleDeposit}
           />
-        ) : transactionType == "Withdraw" ? (
+        ) : transactionType === "Withdraw" ? (
           <WithdrawCard 
             submit = {handleWithdraw}
           />
-        ) : transactionType == "Transfer" ? (
+        ) : transactionType === "Transfer" ? (
           <TransferCard 
             submit = {handleTransfer}
           />

@@ -1,7 +1,7 @@
 import { Avatar, Box, Typography } from "@mui/material";
-import D_Card from "../components/HistoryPage/D_Card";
-import W_Card from "../components/HistoryPage/W_Card";
-import T_Card from "../components/HistoryPage/T_Card";
+import D_CARD from "../components/HistoryPage/D_Card";
+import W_CARD from "../components/HistoryPage/W_Card";
+import T_CARD from "../components/HistoryPage/T_Card";
 import Deposit from "./../assets/images/Deposit.png";
 import Transfer from "./../assets/images/Transfer.png";
 import Withdraw from "./../assets/images/Withdraw.png";
@@ -93,10 +93,10 @@ function History() {
                   gap: 3,
                 }}
               >
-                {userDeposit.length == 0 ? 
+                {userDeposit.length === 0 ? 
                 <Box sx={{height:170}}></Box>: 
                 userDeposit.map((deposit) => (
-                  <D_Card 
+                  <D_CARD 
                   amount={deposit.amount} date={deposit.date}
 
                   />
@@ -141,10 +141,10 @@ function History() {
                   gap: 3,
                 }}
               >
-              {userWithdraw.length == 0 ? 
+              {userWithdraw.length === 0 ? 
                 <Box sx={{height:170}}></Box>: 
                 userWithdraw.map((withdraw) => (
-                  <W_Card  
+                  <W_CARD  
                   amount={withdraw.amount} date={withdraw.date}
 
                   />
@@ -191,10 +191,10 @@ function History() {
                   gap: 3,
                 }}
               >
-                {userTransfer.length == 0 ? 
+                {userTransfer.length === 0 ? 
                 <Box sx={{height:170}}></Box>: 
                 userTransfer.map((tranfer) => (
-                  <T_Card  
+                  <T_CARD  
                   amount={tranfer.amount} date={tranfer.date}
 
                   />
