@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Box, Avatar, Typography, IconButton } from "@mui/material";
-import { deepOrange } from "@mui/material/colors";
 import Deposit from "./../../assets/images/Deposit.png";
 import Transfer from "./../../assets/images/Transfer.png";
 import Withdraw from "./../../assets/images/Withdraw.png";

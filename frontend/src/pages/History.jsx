@@ -93,7 +93,7 @@ function History() {
                   gap: 3,
                 }}
               >
-                {userDeposit.length == 0 ? 
+                {userDeposit.length === 0 ? 
                 <Box sx={{height:170}}></Box>: 
                 userDeposit.map((deposit) => (
                   <D_Card 
@@ -141,7 +141,7 @@ function History() {
                   gap: 3,
                 }}
               >
-              {userWithdraw.length == 0 ? 
+              {userWithdraw.length === 0 ? 
                 <Box sx={{height:170}}></Box>: 
                 userWithdraw.map((withdraw) => (
                   <W_Card  
@@ -191,7 +191,7 @@ function History() {
                   gap: 3,
                 }}
               >
-                {userTransfer.length == 0 ? 
+                {userTransfer.length === 0 ? 
                 <Box sx={{height:170}}></Box>: 
                 userTransfer.map((tranfer) => (
                   <T_Card  
