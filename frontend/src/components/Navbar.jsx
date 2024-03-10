@@ -12,15 +12,17 @@ import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import HomeIcon from "@mui/icons-material/Home";
 import HistoryIcon from "@mui/icons-material/History";
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import logo from "./../assets/images/LOGO.png";
 import kbug from "./../assets/images/KBUG.png";
 
+
 function NavBar() {
   const drawerWidth = 361;
-  const buttonWidth = 200;
+  const buttonWidth = 330;
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -56,6 +58,7 @@ function NavBar() {
           <ListItem key={"HomePage"}>
           <Link to="/" style={{ textDecoration: "none" }}>
             <ListItemButton
+              onClick={handleDrawerClose}
               sx={{
                 width: buttonWidth,
                 backgroundColor:
@@ -74,6 +77,7 @@ function NavBar() {
           <ListItem key={"HistoryPage"}>
             <Link to="/history" style={{ textDecoration: "none" }}>
             <ListItemButton
+              onClick={handleDrawerClose}
               sx={{
                 width: buttonWidth,
                 backgroundColor:
@@ -107,7 +111,7 @@ function NavBar() {
                 navigate("/signin");
               }}
             >
-              <HistoryIcon sx={{ mr: 3 }} />
+              <LogoutIcon sx={{ mr: 3 }} />
               <ListItemText primary={"Logout"} />
             </ListItemButton>
           </ListItem>

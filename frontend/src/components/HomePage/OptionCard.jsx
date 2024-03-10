@@ -29,7 +29,7 @@ function OptionCard({option}) {
               gap: 4,
             }}
           >
-            <Typography variant="h4" style={{ fontWeight: 600 }} sx={{ pl: 4 }}>
+            <Typography style={{ fontWeight: 600 }} sx={{ pl: 4 , typography:{md:"h4", xs:"h5"}}}>
               Options
             </Typography>
 
@@ -50,7 +50,7 @@ function OptionCard({option}) {
                   }}
                 >
                   <Avatar src={Deposit} />
-                  <Typography variant="h5" style={{ fontWeight: 600 }}>
+                  <Typography sx= {{typography:{md:"h5", xs:"h6"}}} style={{ fontWeight: 600 }}>
                     Deposit
                   </Typography>
                 </Box>
@@ -65,7 +65,7 @@ function OptionCard({option}) {
                   }}
                 >
                   <Avatar src={Transfer} />
-                  <Typography variant="h5" style={{ fontWeight: 600 }}>
+                  <Typography sx= {{typography:{md:"h5", xs:"h6"}}} style={{ fontWeight: 600 }}>
                     Transfer
                   </Typography>
                 </Box>
@@ -80,7 +80,7 @@ function OptionCard({option}) {
                   }}
                 >
                   <Avatar src={Withdraw} />
-                  <Typography variant="h5" style={{ fontWeight: 600 }}>
+                  <Typography sx= {{typography:{md:"h5", xs:"h6"}}} style={{ fontWeight: 600 }}>
                     Withdraw
                   </Typography>
                 </Box>

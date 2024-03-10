@@ -51,7 +51,7 @@ function BalanceCard({balance}) {
               </Typography>
 
               <Typography variant="h4" style={{ fontWeight: 600 }}>
-                {new Intl.NumberFormat().format(balance)} THB
+                {!balance ? 0 : new Intl.NumberFormat().format(balance)} THB
               </Typography>
             </Box>
           

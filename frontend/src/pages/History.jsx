@@ -6,10 +6,9 @@ import Deposit from "./../assets/images/Deposit.png";
 import Transfer from "./../assets/images/Transfer.png";
 import Withdraw from "./../assets/images/Withdraw.png";
 import * as React from "react";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axiosInstance from "../utils/axiosInstance";
 function History() {
-
   const [userDeposit, setUserDeposit] = useState([]);
   const [userWithdraw, setUserWithdraw] = useState([]);
   const [userTransfer, setUserTransfer] = useState([]);
@@ -20,7 +19,7 @@ function History() {
         const deposit = await axiosInstance.get("/bank/deposit");
         const transfer = await axiosInstance.get("/bank/tranfer");
         const withdraw = await axiosInstance.get("/bank/withdraw");
-        
+
         setUserDeposit(deposit.data.data);
         setUserWithdraw(withdraw.data.data);
         setUserTransfer(transfer.data.data);
@@ -28,14 +27,12 @@ function History() {
         console.log(deposit);
         console.log(transfer);
         console.log(withdraw);
-        
       } catch (err) {
         console.log(err);
       }
     };
     fetchUserHistory();
   }, []);
-
 
   return (
     <>
@@ -46,7 +43,7 @@ function History() {
           alignItems: "start",
           flexDirection: "column",
           gap: 3,
-          pt: 1,
+          pt: 3,
           ml: 3,
         }}
       >
@@ -80,29 +77,40 @@ function History() {
             <Avatar src={Deposit} />
           </Box>
 
-
+          <Box
+            sx={{
+              width: { md: 1200, xs: 350 },
+              display: "flex",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+              overflowX: "auto",
+              borderRadius: 2,
+              border: { md: 0, xs: 1 },
+              p: 1,
+              gap: 3,
+            }}
+          >
+            {userDeposit.length === 0 ? (
               <Box
                 sx={{
-                  width: { md: 1200, xs: 410 },
+                  height: 170,
                   display: "flex",
-                  flexDirection: "row",
-                  whiteSpace: "nowrap",
-                  overflowX: "auto",
-                  borderRadius: 2,
-                  p: 1,
-                  gap: 3,
+                  alignItems: "center",
                 }}
               >
-                {userDeposit.length === 0 ? 
-                <Box sx={{height:170}}></Box>: 
-                userDeposit.map((deposit) => (
-                  <D_CARD 
-                  amount={deposit.amount} date={deposit.date}
-
-                  />
-                ))
-              }
+                <Typography
+                  style={{ fontWeight: 600 }}
+                  sx={{ pl:3,typography: { xs: "h6" }, color: "#10C700" }}
+                >
+                  Currently you have no deposit.
+                </Typography>
               </Box>
+            ) : (
+              userDeposit.map((deposit) => (
+                <D_CARD amount={deposit.amount} date={deposit.date} />
+              ))
+            )}
+          </Box>
         </Box>
 
         <Box
@@ -128,30 +136,40 @@ function History() {
             <Avatar src={Withdraw} />
           </Box>
 
-
+          <Box
+            sx={{
+              width: { md: 1200, xs: 350 },
+              display: "flex",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+              overflowX: "auto",
+              borderRadius: 2,
+              border: { md: 0, xs: 1 },
+              p: 1,
+              gap: 3,
+            }}
+          >
+            {userWithdraw.length === 0 ? (
               <Box
                 sx={{
-                  width: { md: 1200, xs: 410 },
+                  height: 170,
                   display: "flex",
-                  flexDirection: "row",
-                  whiteSpace: "nowrap",
-                  overflowX: "auto",
-                  borderRadius: 2,
-                  p: 1,
-                  gap: 3,
+                  alignItems: "center",
                 }}
               >
-              {userWithdraw.length === 0 ? 
-                <Box sx={{height:170}}></Box>: 
-                userWithdraw.map((withdraw) => (
-                  <W_CARD  
-                  amount={withdraw.amount} date={withdraw.date}
-
-                  />
-                ))
-              }
-                
+                <Typography
+                  style={{ fontWeight: 600 }}
+                  sx={{ pl:2,typography: { xs: "h6" }, color: "#ED4141" }}
+                >
+                  Currently you have no withdraw.
+                </Typography>
               </Box>
+            ) : (
+              userWithdraw.map((withdraw) => (
+                <W_CARD amount={withdraw.amount} date={withdraw.date} />
+              ))
+            )}
+          </Box>
         </Box>
 
         <Box
@@ -177,31 +195,45 @@ function History() {
             <Avatar src={Transfer} />
           </Box>
 
-         
+          <Box
+            component="div"
+            sx={{
+              width: { md: 1200, xs: 350 },
+              display: "flex",
+              flexDirection: "row",
+              whiteSpace: "nowrap",
+              overflowX: "auto",
+              borderRadius: 2,
+              border: { md: 0, xs: 1 },
+              p: 1,
+              gap: 3,
+            }}
+          >
+            {userTransfer.length === 0 ? (
               <Box
-                component="div"
                 sx={{
-                  width: { md: 1200, xs: 410 },
+                  height: 170,
                   display: "flex",
-                  flexDirection: "row",
-                  whiteSpace: "nowrap",
-                  overflowX: "auto",
-                  borderRadius: 2,
-                  p: 1,
-                  gap: 3,
+                  alignItems: "center",
                 }}
               >
-                {userTransfer.length === 0 ? 
-                <Box sx={{height:170}}></Box>: 
-                userTransfer.map((tranfer) => (
-                  <T_CARD  
-                  amount={tranfer.amount} date={tranfer.date}
-
-                  />
-                ))
-              }
+                <Typography
+                  style={{ fontWeight: 600 }}
+                  sx={{
+                    pl:3,
+                    typography: { xs: "h6" },
+                    color: "#2F69D9",
+                  }}
+                >
+                  Currently you have no transfer.
+                </Typography>
               </Box>
-
+            ) : (
+              userTransfer.map((tranfer) => (
+                <T_CARD amount={tranfer.amount} date={tranfer.date} />
+              ))
+            )}
+          </Box>
         </Box>
       </Box>
     </>
