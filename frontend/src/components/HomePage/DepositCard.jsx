@@ -43,8 +43,7 @@ function DepositCard({submit}){
                 display: 'flex', 
                 justifyContent: 'center',
                 borderRadius: 5,
-                boxShadow: 10,
-                mt:{ md: 0, xs: 10 }}}
+                boxShadow: 10,}}
         >
 
             <Box 
@@ -104,7 +103,10 @@ function DepositCard({submit}){
 
                     <Button 
                     
-                        onClick={() => onSubmit(transactionAmount,transactionNote)}
+                        onClick={() => {
+                        onSubmit(transactionAmount,transactionNote)
+                        window.location.reload()}
+                        }
                         variant="contained"
                         sx={{width:"100%",height:50,backgroundColor:"#2F69D9"}}>
                         <Typography

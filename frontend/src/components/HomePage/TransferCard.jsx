@@ -120,7 +120,10 @@ function TransferCard({submit}) {
           </Box>
 
           <Button
-            onClick={() => onSubmit(transactionAmount,transactionNote,transactionTo)} 
+            onClick={() => {
+              onSubmit(transactionAmount,transactionNote,transactionTo)
+              window.location.reload()
+            }} 
             variant="contained" 
             sx={{ width: "100%", height: 50 }}>
             <Typography
