@@ -25,7 +25,7 @@ export const getDeposit = (req, res) => {
     }
   );
 };
-export const disposit = async (req, res, next) => {
+export const deposit = async (req, res, next) => {
   try {
     // const user_id = req.body.user_id;
     const token = req.header("authorization").split(" ")[1];
@@ -57,7 +57,7 @@ export const disposit = async (req, res, next) => {
         note,
         amount,
         bank,
-        "disposit",
+        "deposit",
         timeStamp(),
       ],
     ];
@@ -81,7 +81,7 @@ export const disposit = async (req, res, next) => {
           ]);
           return res.json({
             success: true,
-            data: "disposit success",
+            data: "deposit success",
           });
         }
       }
