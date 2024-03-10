@@ -154,7 +154,7 @@ function NavBar() {
         sx={{
           width: "100%",
           height: { md: 156, xs: 50 },
-          position: { md: "static", xs: "" },
+          position: { md: "static", xs: "static" },
           p: { xs: 0, md: 5 },
           zIndex: 2,
           backgroundColor: "white",

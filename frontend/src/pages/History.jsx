@@ -43,7 +43,7 @@ function History() {
           alignItems: "start",
           flexDirection: "column",
           gap: 3,
-          pt: 3,
+          pb:3,
           ml: 3,
         }}
       >
@@ -85,7 +85,6 @@ function History() {
               whiteSpace: "nowrap",
               overflowX: "auto",
               borderRadius: 2,
-              border: { md: 0, xs: 1 },
               p: 1,
               gap: 3,
             }}
@@ -93,9 +92,12 @@ function History() {
             {userDeposit.length === 0 ? (
               <Box
                 sx={{
+                  width:350,
                   height: 170,
                   display: "flex",
                   alignItems: "center",
+                  border: { md: 0, xs: 1 },
+                  borderRadius: 2,
                 }}
               >
                 <Typography
@@ -107,7 +109,7 @@ function History() {
               </Box>
             ) : (
               userDeposit.map((deposit) => (
-                <D_CARD amount={deposit.amount} date={deposit.date} />
+                <D_CARD key={deposit.bank_id} amount={deposit.amount} date={deposit.date} />
               ))
             )}
           </Box>
@@ -144,7 +146,6 @@ function History() {
               whiteSpace: "nowrap",
               overflowX: "auto",
               borderRadius: 2,
-              border: { md: 0, xs: 1 },
               p: 1,
               gap: 3,
             }}
@@ -152,9 +153,12 @@ function History() {
             {userWithdraw.length === 0 ? (
               <Box
                 sx={{
+                  width: 350,
                   height: 170,
                   display: "flex",
                   alignItems: "center",
+                  border: { md: 0, xs: 1 },
+                  borderRadius: 2,
                 }}
               >
                 <Typography
@@ -166,7 +170,7 @@ function History() {
               </Box>
             ) : (
               userWithdraw.map((withdraw) => (
-                <W_CARD amount={withdraw.amount} date={withdraw.date} />
+                <W_CARD key={withdraw.bank_id} amount={withdraw.amount} date={withdraw.date} />
               ))
             )}
           </Box>
@@ -204,7 +208,6 @@ function History() {
               whiteSpace: "nowrap",
               overflowX: "auto",
               borderRadius: 2,
-              border: { md: 0, xs: 1 },
               p: 1,
               gap: 3,
             }}
@@ -212,9 +215,12 @@ function History() {
             {userTransfer.length === 0 ? (
               <Box
                 sx={{
+                  width: 350,
                   height: 170,
                   display: "flex",
                   alignItems: "center",
+                  border: { md: 0, xs: 1 },
+                  borderRadius: 2,
                 }}
               >
                 <Typography
@@ -230,7 +236,7 @@ function History() {
               </Box>
             ) : (
               userTransfer.map((tranfer) => (
-                <T_CARD amount={tranfer.amount} date={tranfer.date} />
+                <T_CARD key={tranfer.bank_id} amount={tranfer.amount} date={tranfer.date} />
               ))
             )}
           </Box>

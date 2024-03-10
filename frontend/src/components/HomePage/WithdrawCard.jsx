@@ -101,7 +101,10 @@ function WithdrawCard({submit}) {
           </Box>
 
           <Button 
-            onClick={() => onSubmit(transactionAmount,transactionNote)}
+            onClick={() => {
+              onSubmit(transactionAmount,transactionNote)
+              window.location.reload()
+            }}
             variant="contained" 
             sx={{ width: "100%", height: 50 }}
             >
