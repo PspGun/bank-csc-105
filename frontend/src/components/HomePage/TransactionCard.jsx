@@ -43,7 +43,7 @@ function TransactionCard(){
                 }}>       
 
                 <Typography 
-                    variant="h4"
+                    sx= {{typography:{md:"h4", xs:"h5"}}}
                     style={{fontWeight: 600,}}>
                     Recent Transactions
                 </Typography>
@@ -56,15 +56,24 @@ function TransactionCard(){
                   height:350,
                   display: "flex",
                   flexDirection: "column",
-                  whiteSpace: "nowrap",
+                  whiteSpace: !userDeposit ? "wrap" : "nowrap",
                   overflowY: "auto",
                   borderRadius: 2,
-                  p: 1,
+                  p: !userDeposit ? 0 : 1,
                   gap: 3,
                 }}
               >
                 {
-                  userDeposit.map((transaction) => (
+                  !userDeposit ? 
+                  
+                  <Typography
+                  style={{ fontWeight: 600 }}
+                  sx={{typography: { md:"h5", xs: "h6" },color:"#9B9B9B"}}
+                >
+                  ..Currently you have no transaction..
+                </Typography>
+                  
+                  : userDeposit.map((transaction) => (
                     <TransactionList key={transaction.bank_id} amount={transaction.amount} date={transaction.date} type={transaction.type}/>
                 ))
                 }
